@@ -36,6 +36,9 @@ Thumbs.db
 # Testing
 coverage/
 
+# Claude Code (cau hinh cuc bo)
+.claude/settings.local.json
+
 # Misc
 *.tmp
 *.pid

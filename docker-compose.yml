@@ -1,0 +1,19 @@
+# Chay PostgreSQL cho moi truong dev.
+# Cach dung:  docker compose up -d
+# Tat:        docker compose down   (them -v de xoa luon du lieu)
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: banbanh-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: banbanh
+    ports:
+      - '5432:5432'
+    volumes:
+      - banbanh_pgdata:/var/lib/postgresql/data
+
+volumes:
+  banbanh_pgdata:
