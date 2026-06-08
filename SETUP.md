@@ -83,6 +83,35 @@ npm run dev
 
 ---
 
+## 4b. Dữ liệu mẫu (cho cả nhóm)
+
+Có **2 cách** để có sẵn dữ liệu làm việc (sản phẩm, danh mục, nhà cung cấp, khách hàng, nhân viên, đơn hàng, phiếu nhập):
+
+**Cách 1 — Chạy seed (khuyến nghị):** chạy lại được nhiều lần, luôn về trạng thái sạch.
+```bash
+cd backend
+npm run seed
+```
+
+**Cách 2 — Nạp file dump SQL** ([backend/prisma/dump.sql](backend/prisma/dump.sql)) vào một DB trống:
+```bash
+# Tao DB moi roi nap dump (vi du ten banbanh)
+PGPASSWORD=password psql -h localhost -U postgres -d banbanh -f backend/prisma/dump.sql
+```
+
+> ⚠️ `dump.sql` chứa cả cấu trúc bảng + dữ liệu, nên chỉ nạp vào **DB trống** (chưa chạy `prisma migrate`). Nếu DB đã có bảng thì dùng Cách 1.
+
+**Tài khoản có sẵn:**
+
+| Username | Mật khẩu | Vai trò |
+|----------|----------|---------|
+| `admin` | `admin123` | ADMIN |
+| `manager` | `123456` | MANAGER |
+| `cashier` | `123456` | CASHIER (thu ngân) |
+| `staff` | `123456` | STAFF |
+
+---
+
 ## 5. Chạy Frontend
 
 Mở **terminal mới** (giữ backend đang chạy):
