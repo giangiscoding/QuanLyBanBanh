@@ -1,14 +1,20 @@
 import { Router } from 'express';
-import { authenticate } from '../../common/middlewares/auth.middleware';
-
-// 📌 Phu trach: NGUOI 3 (Luong Ban hang)
-// TODO: CRUD khach hang theo mau module 'products'
+import { authenticate, authorize } from '../../common/middlewares/auth.middleware';
+import { validate } from '../../common/middlewares/validate.middleware';
+import { customersController } from './customers.controller';
+import { createCustomerSchema, updateCustomerSchema } from './customers.validation';
 
 const router = Router();
+
 router.use(authenticate);
 
-router.get('/', (_req, res) => {
-  res.json({ success: true, message: 'Module Customers - chua trien khai', data: [] });
-});
+// Tat ca nhan vien deu xem duoc danh sach khach hang
+router.get('/', customersController.list);
+router.get('/:id', customersController.getById);
+
+// Them/sua/xoa - chi ADMIN/MANAGER/CASHIER
+router.post('/', authorize('ADMIN', 'MANAGER', 'CASHIER'), validate(createCustomerSchema), customersController.create);
+router.put('/:id', authorize('ADMIN', 'MANAGER', 'CASHIER'), validate(updateCustomerSchema), customersController.update);
+router.delete('/:id', authorize('ADMIN', 'MANAGER'), customersController.remove);
 
 export const customersRoutes = router;

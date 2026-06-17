@@ -1,14 +1,18 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../../common/middlewares/auth.middleware';
-
-// 📌 Phu trach: NGUOI 3 (Luong Ban hang)
-// TODO: CRUD nhan vien. Chi ADMIN/MANAGER duoc quan ly.
+import { validate } from '../../common/middlewares/validate.middleware';
+import { employeesController } from './employees.controller';
+import { createEmployeeSchema, updateEmployeeSchema } from './employees.validation';
 
 const router = Router();
+
 router.use(authenticate);
 
-router.get('/', authorize('ADMIN', 'MANAGER'), (_req, res) => {
-  res.json({ success: true, message: 'Module Employees - chua trien khai', data: [] });
-});
+// Chi ADMIN/MANAGER duoc quan ly nhan vien
+router.get('/', authorize('ADMIN', 'MANAGER'), employeesController.list);
+router.get('/:id', authorize('ADMIN', 'MANAGER'), employeesController.getById);
+router.post('/', authorize('ADMIN'), validate(createEmployeeSchema), employeesController.create);
+router.put('/:id', authorize('ADMIN', 'MANAGER'), validate(updateEmployeeSchema), employeesController.update);
+router.delete('/:id', authorize('ADMIN'), employeesController.remove);
 
 export const employeesRoutes = router;
