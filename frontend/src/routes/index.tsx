@@ -4,6 +4,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import PlaceholderPage from '@/components/PlaceholderPage';
 import LoginPage from '@/modules/auth/LoginPage';
 import ProductsPage from '@/modules/products/ProductsPage';
+import PurchasingPage from '../modules/purchasing/PurchasingPage';
 
 // Moi nguoi thay PlaceholderPage bang trang that cua module minh.
 export const router = createBrowserRouter([
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
           { path: '/categories', element: <PlaceholderPage title="Danh muc" owner="Nguoi 1" /> },
           { path: '/reports', element: <PlaceholderPage title="Bao cao" owner="Nguoi 1" /> },
           { path: '/suppliers', element: <PlaceholderPage title="Nha cung cap" owner="Nguoi 2" /> },
-          { path: '/purchasing', element: <PlaceholderPage title="Nhap hang" owner="Nguoi 2" /> },
+          { path: '/purchasing', element: <PurchasingPage /> },
           { path: '/inventory', element: <PlaceholderPage title="Kho" owner="Nguoi 2" /> },
           { path: '/customers', element: <PlaceholderPage title="Khach hang" owner="Nguoi 3" /> },
           { path: '/sales', element: <PlaceholderPage title="Ban hang" owner="Nguoi 3" /> },

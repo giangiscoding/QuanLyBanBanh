@@ -32,17 +32,29 @@ export default function PurchasingPage() {
   }, []);
 
   const handleCreate = async (values: any) => {
-    try {
-      // Gọi API tạo phiếu nhập, Backend của cậu sẽ tự động cộng số lượng vào Kho
-      await api.post('/purchasing/orders', values);
-      message.success('Tạo phiếu nhập thành công! Hàng đã tự động cộng vào Kho.');
-      setIsModalOpen(false);
-      form.resetFields();
-      fetchData(); // Cập nhật lại bảng
-    } catch (error) {
-      message.error('Lỗi hệ thống khi tạo phiếu nhập');
-    }
-  };
+  try {
+    const payload = {
+      supplierId: values.supplierId,
+      // Backend yêu cầu một mảng 'items', và dùng 'unitCost' thay vì 'price'
+      items: [
+        {
+          productId: values.productId,
+          quantity: values.quantity,
+          unitCost: values.price, 
+        }
+      ]
+    };
+
+    await api.post('/purchasing', payload); 
+    
+    message.success('Tạo phiếu nhập thành công! Hàng đã tự động cộng vào Kho.');
+    setIsModalOpen(false);
+    form.resetFields();
+    fetchData(); // Cập nhật lại bảng lịch sử nhập hàng
+  } catch (error) {
+    message.error('Lỗi hệ thống khi tạo phiếu nhập. Vui lòng kiểm tra lại thông tin.');
+  }
+};
 
   const columns: ColumnsType<any> = [
     { title: 'Mã Phiếu', dataIndex: 'code', key: 'code', render: (t) => <b>{t || 'PN-NEW'}</b> },
