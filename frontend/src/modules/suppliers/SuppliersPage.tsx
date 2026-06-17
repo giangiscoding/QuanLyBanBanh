@@ -12,7 +12,6 @@ interface Supplier {
   phone?: string;
   address?: string;
   taxCode?: string;
-  isActive: boolean;
 }
 
 export default function SuppliersPage() {
@@ -84,13 +83,7 @@ export default function SuppliersPage() {
     { title: 'Số điện thoại', dataIndex: 'phone', key: 'phone', render: (t) => t || '—' },
     { title: 'Email', dataIndex: 'email', key: 'email', render: (t) => t || '—' },
     { title: 'Mã số thuế', dataIndex: 'taxCode', key: 'taxCode', render: (t) => t || '—' },
-    { 
-      title: 'Trạng thái', 
-      dataIndex: 'isActive', 
-      key: 'isActive',
-      render: (isActive: boolean) => 
-        isActive ? <Tag color="green">Đang giao dịch</Tag> : <Tag color="red">Đã ngừng</Tag>
-    },
+  
     {
       title: 'Thao tác',
       key: 'action',
@@ -131,7 +124,6 @@ export default function SuppliersPage() {
             onClick={() => {
               setEditingId(null);
               form.resetFields();
-              form.setFieldValue('isActive', true); // Mặc định là true khi tạo mới
               setIsModalOpen(true);
             }}
           >
@@ -173,8 +165,6 @@ export default function SuppliersPage() {
           <Form.Item name="taxCode" label="Mã số thuế">
             <Input placeholder="VD: 0101234567" />
           </Form.Item>
-          {/* Ẩn field isActive ở form, chỉ dùng để pass data */}
-          <Form.Item name="isActive" hidden><Input /></Form.Item>
         </Form>
       </Modal>
     </div>

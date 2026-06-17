@@ -46,17 +46,17 @@ export const suppliersService = {
   },
 
   async create(input: CreateSupplierInput) {
-    return prisma.supplier.create({ data: input });
+    return prisma.supplier.create({ data: input }); // [cite: 21]
   },
 
   async update(id: number, input: UpdateSupplierInput) {
     await this.getById(id);
-    return prisma.supplier.update({ where: { id }, data: input });
+    return prisma.supplier.update({ where: { id }, data: input }); // [cite: 23]
   },
 
   async remove(id: number) {
     await this.getById(id);
-    // Khong xoa han - chi an di de giu lich su giao dich
-    return prisma.supplier.update({ where: { id }, data: { isActive: false } });
+    // Thay đổi: Do database không có cột isActive, ta thực hiện xóa vĩnh viễn (delete) 
+    return prisma.supplier.delete({ where: { id } }); 
   },
 };
