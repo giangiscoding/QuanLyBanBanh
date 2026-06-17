@@ -1,16 +1,21 @@
 import { Router } from 'express';
-import { authenticate } from '../../common/middlewares/auth.middleware';
+import { validate } from '../../common/middlewares/validate.middleware';
+import { authenticate, authorize } from '../../common/middlewares/auth.middleware';
+import { purchasingController } from './purchasing.controller';
+import { createPurchaseOrderSchema } from './purchasing.validation';
 
 // 📌 Phu trach: NGUOI 2 (Luong Cung ung - Kho)
-// TODO: Tao phieu nhap hang. Khi nhap thanh cong PHAI goi
-//   inventoryService.stockMovement({ type: 'IN', ... }) de cong ton kho.
-//   Nen boc trong prisma.$transaction de dam bao toan ven du lieu.
 
 const router = Router();
 router.use(authenticate);
 
-router.get('/', (_req, res) => {
-  res.json({ success: true, message: 'Module Purchasing - chua trien khai', data: [] });
-});
+router.get('/', purchasingController.list);
+router.get('/:id', purchasingController.getById);
+
+// Tao phieu nhap - chi ADMIN/MANAGER
+router.post('/', authorize('ADMIN', 'MANAGER'), validate(createPurchaseOrderSchema), purchasingController.create);
+
+// Xac nhan da nhan hang cho phieu dang PENDING -> cong ton kho
+router.put('/:id/receive', authorize('ADMIN', 'MANAGER'), purchasingController.receive);
 
 export const purchasingRoutes = router;
