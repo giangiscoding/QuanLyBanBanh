@@ -1,14 +1,19 @@
 import { Router } from 'express';
-import { authenticate } from '../../common/middlewares/auth.middleware';
-
-// 📌 Phu trach: NGUOI 2 (Luong Cung ung - Kho)
-// TODO: CRUD nha cung cap theo mau module 'products'
+import { validate } from '../../common/middlewares/validate.middleware';
+import { authenticate, authorize } from '../../common/middlewares/auth.middleware';
+import { suppliersController } from './suppliers.controller';
+import { createSupplierSchema, updateSupplierSchema } from './suppliers.validation';
 
 const router = Router();
-router.use(authenticate);
 
-router.get('/', (_req, res) => {
-  res.json({ success: true, message: 'Module Suppliers - chua trien khai', data: [] });
-});
+// Quan ly nha cung cap chi danh cho ADMIN/MANAGER (ca xem lan chinh sua)
+router.use(authenticate);
+router.use(authorize('ADMIN', 'MANAGER'));
+
+router.get('/', suppliersController.list);
+router.get('/:id', suppliersController.getById);
+router.post('/', validate(createSupplierSchema), suppliersController.create);
+router.put('/:id', validate(updateSupplierSchema), suppliersController.update);
+router.delete('/:id', suppliersController.remove);
 
 export const suppliersRoutes = router;

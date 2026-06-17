@@ -1,11 +1,18 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import PlaceholderPage from '@/components/PlaceholderPage';
+import RoleRoute from '@/components/RoleRoute';
 import LoginPage from '@/modules/auth/LoginPage';
 import ProductsPage from '@/modules/products/ProductsPage';
+import CategoriesPage from '@/modules/categories/CategoriesPage';
+import SuppliersPage from '@/modules/suppliers/SuppliersPage';
+import CustomersPage from '@/modules/customers/CustomersPage';
+import EmployeesPage from '@/modules/employees/EmployeesPage';
+import InventoryPage from '@/modules/inventory/InventoryPage';
+import PurchasingPage from '@/modules/purchasing/PurchasingPage';
+import SalesPage from '@/modules/sales/SalesPage';
+import ReportsPage from '@/modules/reports/ReportsPage';
 
-// Moi nguoi thay PlaceholderPage bang trang that cua module minh.
 export const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
   {
@@ -14,16 +21,21 @@ export const router = createBrowserRouter([
       {
         element: <MainLayout />,
         children: [
-          { index: true, element: <Navigate to="/products" replace /> },
-          { path: '/products', element: <ProductsPage /> }, // Nguoi 1 (mau)
-          { path: '/categories', element: <PlaceholderPage title="Danh muc" owner="Nguoi 1" /> },
-          { path: '/reports', element: <PlaceholderPage title="Bao cao" owner="Nguoi 1" /> },
-          { path: '/suppliers', element: <PlaceholderPage title="Nha cung cap" owner="Nguoi 2" /> },
-          { path: '/purchasing', element: <PlaceholderPage title="Nhap hang" owner="Nguoi 2" /> },
-          { path: '/inventory', element: <PlaceholderPage title="Kho" owner="Nguoi 2" /> },
-          { path: '/customers', element: <PlaceholderPage title="Khach hang" owner="Nguoi 3" /> },
-          { path: '/sales', element: <PlaceholderPage title="Ban hang" owner="Nguoi 3" /> },
-          { path: '/employees', element: <PlaceholderPage title="Nhan vien" owner="Nguoi 3" /> },
+          { index: true, element: <Navigate to="/sales" replace /> },
+          {
+            element: <RoleRoute />,
+            children: [
+              { path: '/sales', element: <SalesPage /> },
+              { path: '/products', element: <ProductsPage /> },
+              { path: '/categories', element: <CategoriesPage /> },
+              { path: '/inventory', element: <InventoryPage /> },
+              { path: '/purchasing', element: <PurchasingPage /> },
+              { path: '/suppliers', element: <SuppliersPage /> },
+              { path: '/customers', element: <CustomersPage /> },
+              { path: '/employees', element: <EmployeesPage /> },
+              { path: '/reports', element: <ReportsPage /> },
+            ],
+          },
         ],
       },
     ],

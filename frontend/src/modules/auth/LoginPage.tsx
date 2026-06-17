@@ -14,7 +14,7 @@ export default function LoginPage() {
     try {
       await login(values.username, values.password);
       message.success('Dang nhap thanh cong');
-      navigate('/products');
+      navigate('/');
     } catch (err: unknown) {
       const msg =
         (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??

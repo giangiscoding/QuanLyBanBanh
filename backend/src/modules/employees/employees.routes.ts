@@ -10,6 +10,7 @@ router.use(authenticate);
 
 // Chi ADMIN/MANAGER duoc quan ly nhan vien
 router.get('/', authorize('ADMIN', 'MANAGER'), employeesController.list);
+router.get('/:id/detail', authorize('ADMIN', 'MANAGER'), employeesController.getDetail);
 router.get('/:id', authorize('ADMIN', 'MANAGER'), employeesController.getById);
 router.post('/', authorize('ADMIN'), validate(createEmployeeSchema), employeesController.create);
 router.put('/:id', authorize('ADMIN', 'MANAGER'), validate(updateEmployeeSchema), employeesController.update);

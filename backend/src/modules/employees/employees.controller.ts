@@ -19,6 +19,11 @@ export const employeesController = {
     sendSuccess(res, { data: employee });
   }),
 
+  getDetail: asyncHandler(async (req: Request, res: Response) => {
+    const detail = await employeesService.getDetail(Number(req.params.id));
+    sendSuccess(res, { data: detail });
+  }),
+
   create: asyncHandler(async (req: Request, res: Response) => {
     const employee = await employeesService.create(req.body);
     sendSuccess(res, { data: employee, message: 'Tao nhan vien thanh cong', statusCode: 201 });
@@ -31,6 +36,6 @@ export const employeesController = {
 
   remove: asyncHandler(async (req: Request, res: Response) => {
     await employeesService.remove(Number(req.params.id));
-    sendSuccess(res, { message: 'Da xoa nhan vien' });
+    sendSuccess(res, { message: 'Da chuyen nhan vien sang trang thai nghi viec (van luu ho so)' });
   }),
 };

@@ -11,27 +11,38 @@ import {
   LogoutOutlined,
   TagsOutlined,
 } from '@ant-design/icons';
+import type { ReactNode } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/store/AuthContext';
+import { NAV_ITEMS } from '@/store/permissions';
 
 const { Header, Sider, Content } = Layout;
 
-// Menu sidebar - moi muc tro toi mot module
-const menuItems = [
-  { key: '/sales', icon: <ShoppingCartOutlined />, label: <Link to="/sales">Ban hang</Link> },
-  { key: '/products', icon: <AppstoreOutlined />, label: <Link to="/products">San pham</Link> },
-  { key: '/categories', icon: <TagsOutlined />, label: <Link to="/categories">Danh muc</Link> },
-  { key: '/inventory', icon: <InboxOutlined />, label: <Link to="/inventory">Kho</Link> },
-  { key: '/purchasing', icon: <ImportOutlined />, label: <Link to="/purchasing">Nhap hang</Link> },
-  { key: '/suppliers', icon: <ShopOutlined />, label: <Link to="/suppliers">Nha cung cap</Link> },
-  { key: '/customers', icon: <UserOutlined />, label: <Link to="/customers">Khach hang</Link> },
-  { key: '/employees', icon: <TeamOutlined />, label: <Link to="/employees">Nhan vien</Link> },
-  { key: '/reports', icon: <BarChartOutlined />, label: <Link to="/reports">Bao cao</Link> },
-];
+// Anh xa ten icon (trong permissions) sang component icon
+const ICONS: Record<string, ReactNode> = {
+  cart: <ShoppingCartOutlined />,
+  appstore: <AppstoreOutlined />,
+  tags: <TagsOutlined />,
+  inbox: <InboxOutlined />,
+  import: <ImportOutlined />,
+  shop: <ShopOutlined />,
+  user: <UserOutlined />,
+  team: <TeamOutlined />,
+  chart: <BarChartOutlined />,
+};
 
 export default function MainLayout() {
   const location = useLocation();
   const { user, logout } = useAuth();
+
+  // Chi hien muc menu ma vai tro hien tai duoc phep dung
+  const menuItems = NAV_ITEMS.filter((item) => user && item.roles.includes(user.role)).map(
+    (item) => ({
+      key: item.path,
+      icon: ICONS[item.icon],
+      label: <Link to={item.path}>{item.label}</Link>,
+    }),
+  );
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
