@@ -95,8 +95,8 @@
 % =====================================================================
 \begin{titlepage}
 \centering
-{\large TRƯỜNG ĐẠI HỌC \ldots\ldots\ldots\ldots\ldots\par}
-{\large KHOA CÔNG NGHỆ THÔNG TIN\par}
+{\large ĐẠI HỌC BÁCH KHOA HÀ NỘI\par}
+{\large KHOA TOÁN TIN\par}
 \vspace{0.4cm}
 \rule{\textwidth}{0.5pt}
 
@@ -138,19 +138,15 @@ Nhóm gồm \textbf{3 thành viên}, chia việc \textbf{theo chiều dọc (ful
 \begin{table}[H]
 \centering
 \small
-\begin{tabularx}{\textwidth}{C{0.5cm} L{3.1cm} L{2.2cm} X C{1.6cm}}
-\toprule
-\textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Nhiệm vụ phụ trách} & \textbf{Hoàn thành} \\
-\midrule
+\begin{tabularx}{\textwidth}{|C{0.5cm}|L{3.1cm}|L{2.2cm}|X|C{1.6cm}|}
+\hline
+\textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Nhiệm vụ phụ trách} & \textbf{Hoàn thành} \\ \hline
 1 & \ldots\ldots\ldots\ldots\ (Nhóm trưởng) & \ldots\ldots &
-\textbf{Nền tảng \& Sản phẩm.} Thiết lập kiến trúc, CSDL chung; module \textit{Auth} (đăng nhập, JWT), \textbf{phân quyền theo vai trò}, layout/điều hướng; module \textit{Products} \& \textit{Categories}; module \textit{Reports} (doanh thu, lợi nhuận, tồn kho). Tổng hợp \& viết báo cáo. & 100\% \\
-\midrule
+\textbf{Nền tảng \& Sản phẩm.} Thiết lập kiến trúc, CSDL chung; module \textit{Auth} (đăng nhập, JWT), \textbf{phân quyền theo vai trò}, layout/điều hướng; module \textit{Products} \& \textit{Categories}; module \textit{Reports} (doanh thu, lợi nhuận, tồn kho). Tổng hợp \& viết báo cáo. & 100\% \\ \hline
 2 & \ldots\ldots\ldots\ldots & \ldots\ldots &
-\textbf{Luồng Cung ứng -- Kho.} Module \textit{Suppliers} (nhà cung cấp); module \textit{Purchasing} (lập phiếu nhập, tự động cộng tồn kho); module \textit{Inventory} (cảnh báo hết hàng, lịch sử xuất/nhập, kiểm kê). Định nghĩa service tồn kho dùng chung. & 100\% \\
-\midrule
+\textbf{Luồng Cung ứng -- Kho.} Module \textit{Suppliers} (nhà cung cấp); module \textit{Purchasing} (lập phiếu nhập, tự động cộng tồn kho); module \textit{Inventory} (cảnh báo hết hàng, lịch sử xuất/nhập, kiểm kê). Định nghĩa service tồn kho dùng chung. & 100\% \\ \hline
 3 & \ldots\ldots\ldots\ldots & \ldots\ldots &
-\textbf{Luồng Bán hàng \& Nhân sự.} Module \textit{Sales} (màn hình bán hàng POS, lập hóa đơn, tự động trừ tồn kho, hủy đơn hoàn kho); module \textit{Customers}; module \textit{Employees} (hồ sơ cá nhân, CCCD, chấm công, đánh giá hiệu suất). & 100\% \\
-\bottomrule
+\textbf{Luồng Bán hàng \& Nhân sự.} Module \textit{Sales} (màn hình bán hàng POS, lập hóa đơn, tự động trừ tồn kho, hủy đơn hoàn kho); module \textit{Customers}; module \textit{Employees} (hồ sơ cá nhân, CCCD, chấm công, đánh giá hiệu suất). & 100\% \\ \hline
 \end{tabularx}
 \caption{Bảng phân công nhiệm vụ giữa các thành viên}
 \end{table}
@@ -217,17 +213,15 @@ Một cửa hàng bánh quy mô vừa thường có: chủ cửa hàng (kiêm qu
 \subsection{Đánh giá hiện trạng}
 \begin{table}[H]
 \centering\small
-\begin{tabularx}{\textwidth}{L{4cm} X}
-\toprule
-\textbf{Hạn chế} & \textbf{Hệ quả} \\
-\midrule
-Ghi hóa đơn thủ công & Tính nhầm tiền/giảm giá; khó tra cứu lịch sử giao dịch. \\
-Tồn kho cập nhật tay & Không biết tức thời mặt hàng sắp hết; dễ thiếu/thừa hàng. \\
-Nhập hàng tách rời tồn kho & Số liệu kho và sổ nhập lệch nhau. \\
-Không truy vết biến động kho & Khó phát hiện và quy trách nhiệm thất thoát. \\
-Báo cáo thủ công & Chậm, thiếu chính xác, không kịp thời cho quyết định. \\
-Chưa có công cụ nhân sự & Khó theo dõi công và hiệu suất nhân viên. \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{4cm}|X|}
+\hline
+\textbf{Hạn chế} & \textbf{Hệ quả} \\ \hline
+Ghi hóa đơn thủ công & Tính nhầm tiền/giảm giá; khó tra cứu lịch sử giao dịch. \\ \hline
+Tồn kho cập nhật tay & Không biết tức thời mặt hàng sắp hết; dễ thiếu/thừa hàng. \\ \hline
+Nhập hàng tách rời tồn kho & Số liệu kho và sổ nhập lệch nhau. \\ \hline
+Không truy vết biến động kho & Khó phát hiện và quy trách nhiệm thất thoát. \\ \hline
+Báo cáo thủ công & Chậm, thiếu chính xác, không kịp thời cho quyết định. \\ \hline
+Chưa có công cụ nhân sự & Khó theo dõi công và hiệu suất nhân viên. \\ \hline
 \end{tabularx}
 \caption{Hạn chế của quy trình thủ công hiện tại}
 \end{table}
@@ -247,47 +241,45 @@ Cần xây dựng một hệ thống thông tin \textbf{tập trung} thay thế 
 \section{Yêu cầu chức năng}
 Các yêu cầu chức năng được nhóm theo phân hệ và đánh mã FR (Functional Requirement).
 
-\begin{longtable}{L{1.4cm} L{3cm} L{8.5cm}}
-\toprule
-\textbf{Mã} & \textbf{Phân hệ} & \textbf{Mô tả yêu cầu} \\
-\midrule \endhead
-FR-01 & Xác thực & Đăng nhập bằng tài khoản (username/mật khẩu), cấp JWT. \\
-FR-02 & Xác thực & Phân quyền theo 4 vai trò: ADMIN, MANAGER, CASHIER, STAFF. \\
-FR-03 & Sản phẩm & Thêm/sửa/ngừng kinh doanh sản phẩm; tìm kiếm, phân trang. \\
-FR-04 & Danh mục & Thêm/sửa/xóa danh mục; chặn xóa danh mục còn sản phẩm. \\
-FR-05 & Bán hàng & Tạo hóa đơn gồm nhiều mặt hàng, áp giảm giá, chọn hình thức thanh toán. \\
-FR-06 & Bán hàng & Kiểm tra tồn kho khi bán; \textbf{tự động trừ tồn kho} trong giao dịch. \\
-FR-07 & Bán hàng & Hủy hóa đơn và \textbf{hoàn lại tồn kho}. \\
-FR-08 & Bán hàng & Xem danh sách và chi tiết hóa đơn, lọc theo trạng thái/khách hàng. \\
-FR-09 & Nhập hàng & Lập phiếu nhập từ nhà cung cấp; \textbf{tự động cộng tồn kho}. \\
-FR-10 & Kho & Cảnh báo sản phẩm có tồn $\le$ ngưỡng tối thiểu. \\
-FR-11 & Kho & Xem lịch sử xuất/nhập (biến động kho) theo sản phẩm. \\
-FR-12 & Kho & Kiểm kê: điều chỉnh tồn về số đếm thực tế, ghi nhận chênh lệch. \\
-FR-13 & Nhà cung cấp & Quản lý thông tin nhà cung cấp (CRUD). \\
-FR-14 & Khách hàng & Quản lý khách hàng, điểm tích lũy (CRUD). \\
-FR-15 & Nhân viên & Quản lý hồ sơ nhân viên (CCCD, ngày sinh, liên hệ, lương...). \\
-FR-16 & Nhân viên & Quản lý trạng thái; nghỉ việc \emph{vẫn lưu hồ sơ} (không xóa cứng). \\
-FR-17 & Nhân viên & Chấm công; xem số công và đánh giá hiệu suất theo tháng/quý/năm. \\
-FR-18 & Báo cáo & Báo cáo doanh thu, giá vốn, lợi nhuận theo khoảng thời gian. \\
-FR-19 & Báo cáo & Top sản phẩm bán chạy; doanh thu theo ngày. \\
-FR-20 & Báo cáo & Báo cáo tồn kho: giá trị tồn, danh sách sắp hết. \\
-\bottomrule
+\begin{longtable}{|L{1.4cm}|L{3cm}|L{8.5cm}|}
+\hline
+\textbf{Mã} & \textbf{Phân hệ} & \textbf{Mô tả yêu cầu} \\ \hline
+\endhead
+FR-01 & Xác thực & Đăng nhập bằng tài khoản (username/mật khẩu), cấp JWT. \\ \hline
+FR-02 & Xác thực & Phân quyền theo 4 vai trò: ADMIN, MANAGER, CASHIER, STAFF. \\ \hline
+FR-03 & Sản phẩm & Thêm/sửa/ngừng kinh doanh sản phẩm; tìm kiếm, phân trang. \\ \hline
+FR-04 & Danh mục & Thêm/sửa/xóa danh mục; chặn xóa danh mục còn sản phẩm. \\ \hline
+FR-05 & Bán hàng & Tạo hóa đơn gồm nhiều mặt hàng, áp giảm giá, chọn hình thức thanh toán. \\ \hline
+FR-06 & Bán hàng & Kiểm tra tồn kho khi bán; \textbf{tự động trừ tồn kho} trong giao dịch. \\ \hline
+FR-07 & Bán hàng & Hủy hóa đơn và \textbf{hoàn lại tồn kho}. \\ \hline
+FR-08 & Bán hàng & Xem danh sách và chi tiết hóa đơn, lọc theo trạng thái/khách hàng. \\ \hline
+FR-09 & Nhập hàng & Lập phiếu nhập từ nhà cung cấp; \textbf{tự động cộng tồn kho}. \\ \hline
+FR-10 & Kho & Cảnh báo sản phẩm có tồn $\le$ ngưỡng tối thiểu. \\ \hline
+FR-11 & Kho & Xem lịch sử xuất/nhập (biến động kho) theo sản phẩm. \\ \hline
+FR-12 & Kho & Kiểm kê: điều chỉnh tồn về số đếm thực tế, ghi nhận chênh lệch. \\ \hline
+FR-13 & Nhà cung cấp & Quản lý thông tin nhà cung cấp (CRUD). \\ \hline
+FR-14 & Khách hàng & Quản lý khách hàng, điểm tích lũy (CRUD). \\ \hline
+FR-15 & Nhân viên & Quản lý hồ sơ nhân viên (CCCD, ngày sinh, liên hệ, lương...). \\ \hline
+FR-16 & Nhân viên & Quản lý trạng thái; nghỉ việc \emph{vẫn lưu hồ sơ} (không xóa cứng). \\ \hline
+FR-17 & Nhân viên & Chấm công; xem số công và đánh giá hiệu suất theo tháng/quý/năm. \\ \hline
+FR-18 & Báo cáo & Báo cáo doanh thu, giá vốn, lợi nhuận theo khoảng thời gian. \\ \hline
+FR-19 & Báo cáo & Top sản phẩm bán chạy; doanh thu theo ngày. \\ \hline
+FR-20 & Báo cáo & Báo cáo tồn kho: giá trị tồn, danh sách sắp hết. \\ \hline
 \caption{Danh sách yêu cầu chức năng}
 \end{longtable}
 
 \section{Yêu cầu phi chức năng}
-\begin{longtable}{L{1.6cm} L{3.2cm} L{8.2cm}}
-\toprule
-\textbf{Mã} & \textbf{Loại} & \textbf{Mô tả} \\
-\midrule \endhead
-NFR-01 & Bảo mật & Mật khẩu băm bằng bcrypt; xác thực JWT; kiểm tra quyền ở cả backend và giao diện. \\
-NFR-02 & Toàn vẹn dữ liệu & Thao tác nhiều bảng (bán/nhập hàng) bọc trong transaction; tồn kho chỉ thay đổi qua một dịch vụ duy nhất. \\
-NFR-03 & Hiệu năng & Danh sách có phân trang; chỉ mục trên khóa chính/khóa ngoại; truy vấn tổng hợp dùng aggregate. \\
-NFR-04 & Tin cậy & Kiểm tra dữ liệu đầu vào bằng Zod; xử lý lỗi tập trung, trả mã lỗi/HTTP phù hợp. \\
-NFR-05 & Bảo trì & Kiến trúc modular; tách tầng controller -- service -- truy vấn; quy ước đặt tên thống nhất. \\
-NFR-06 & Khả dụng & Giao diện tiếng Việt, responsive, thao tác nhanh cho thu ngân. \\
-NFR-07 & Khả chuyển & Đóng gói bằng Docker, chạy được trên mọi máy có Docker. \\
-\bottomrule
+\begin{longtable}{|L{1.6cm}|L{3.2cm}|L{8.2cm}|}
+\hline
+\textbf{Mã} & \textbf{Loại} & \textbf{Mô tả} \\ \hline
+\endhead
+NFR-01 & Bảo mật & Mật khẩu băm bằng bcrypt; xác thực JWT; kiểm tra quyền ở cả backend và giao diện. \\ \hline
+NFR-02 & Toàn vẹn dữ liệu & Thao tác nhiều bảng (bán/nhập hàng) bọc trong transaction; tồn kho chỉ thay đổi qua một dịch vụ duy nhất. \\ \hline
+NFR-03 & Hiệu năng & Danh sách có phân trang; chỉ mục trên khóa chính/khóa ngoại; truy vấn tổng hợp dùng aggregate. \\ \hline
+NFR-04 & Tin cậy & Kiểm tra dữ liệu đầu vào bằng Zod; xử lý lỗi tập trung, trả mã lỗi/HTTP phù hợp. \\ \hline
+NFR-05 & Bảo trì & Kiến trúc modular; tách tầng controller -- service -- truy vấn; quy ước đặt tên thống nhất. \\ \hline
+NFR-06 & Khả dụng & Giao diện tiếng Việt, responsive, thao tác nhanh cho thu ngân. \\ \hline
+NFR-07 & Khả chuyển & Đóng gói bằng Docker, chạy được trên mọi máy có Docker. \\ \hline
 \caption{Danh sách yêu cầu phi chức năng}
 \end{longtable}
 
@@ -296,15 +288,13 @@ NFR-07 & Khả chuyển & Đóng gói bằng Docker, chạy được trên mọi
 
 \begin{table}[H]
 \centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\textbf{Tác nhân} & \textbf{Vai trò / quyền hạn} \\
-\midrule
-Quản trị viên (ADMIN) & Toàn quyền: cấu hình, quản lý tài khoản/nhân viên, mọi nghiệp vụ và báo cáo. \\
-Quản lý (MANAGER) & Quản lý sản phẩm, nhập hàng, kho, nhà cung cấp, nhân viên, báo cáo. \\
-Thu ngân (CASHIER) & Bán hàng (POS), quản lý khách hàng, xem sản phẩm/kho. \\
-Nhân viên (STAFF) & Xem sản phẩm, khách hàng; hỗ trợ bán hàng (theo phân quyền). \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\textbf{Tác nhân} & \textbf{Vai trò / quyền hạn} \\ \hline
+Quản trị viên (ADMIN) & Toàn quyền: cấu hình, quản lý tài khoản/nhân viên, mọi nghiệp vụ và báo cáo. \\ \hline
+Quản lý (MANAGER) & Quản lý sản phẩm, nhập hàng, kho, nhà cung cấp, nhân viên, báo cáo. \\ \hline
+Thu ngân (CASHIER) & Bán hàng (POS), quản lý khách hàng, xem sản phẩm/kho. \\ \hline
+Nhân viên (STAFF) & Xem sản phẩm, khách hàng; hỗ trợ bán hàng (theo phân quyền). \\ \hline
 \end{tabularx}
 \caption{Mô tả các tác nhân}
 \end{table}
@@ -312,20 +302,18 @@ Nhân viên (STAFF) & Xem sản phẩm, khách hàng; hỗ trợ bán hàng (the
 \noindent Ma trận phân quyền (✓: được phép; ô trống: không):
 \begin{table}[H]
 \centering\small
-\begin{tabularx}{\textwidth}{X C{1.7cm} C{1.7cm} C{1.7cm} C{1.5cm}}
-\toprule
-\textbf{Chức năng} & \textbf{ADMIN} & \textbf{MANAGER} & \textbf{CASHIER} & \textbf{STAFF} \\
-\midrule
-Bán hàng (POS)            & ✓ & ✓ & ✓ &   \\
-Xem hóa đơn               & ✓ & ✓ & ✓ & ✓ \\
-Hủy hóa đơn               & ✓ & ✓ &   &   \\
-Quản lý sản phẩm/danh mục & ✓ & ✓ &   &   \\
-Quản lý khách hàng        & ✓ & ✓ & ✓ &   \\
-Nhập hàng / nhà cung cấp  & ✓ & ✓ &   &   \\
-Quản lý kho / kiểm kê     & ✓ & ✓ &   &   \\
-Quản lý nhân viên         & ✓ & ✓ &   &   \\
-Xem báo cáo               & ✓ & ✓ &   &   \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|X|C{1.7cm}|C{1.7cm}|C{1.7cm}|C{1.5cm}|}
+\hline
+\textbf{Chức năng} & \textbf{ADMIN} & \textbf{MANAGER} & \textbf{CASHIER} & \textbf{STAFF} \\ \hline
+Bán hàng (POS)            & ✓ & ✓ & ✓ &   \\ \hline
+Xem hóa đơn               & ✓ & ✓ & ✓ & ✓ \\ \hline
+Hủy hóa đơn               & ✓ & ✓ &   &   \\ \hline
+Quản lý sản phẩm/danh mục & ✓ & ✓ &   &   \\ \hline
+Quản lý khách hàng        & ✓ & ✓ & ✓ &   \\ \hline
+Nhập hàng / nhà cung cấp  & ✓ & ✓ &   &   \\ \hline
+Quản lý kho / kiểm kê     & ✓ & ✓ &   &   \\ \hline
+Quản lý nhân viên         & ✓ & ✓ &   &   \\ \hline
+Xem báo cáo               & ✓ & ✓ &   &   \\ \hline
 \end{tabularx}
 \caption{Ma trận phân quyền theo vai trò}
 \end{table}
@@ -381,22 +369,20 @@ Hệ thống được phân rã thành 3 cụm nghiệp vụ chính, mỗi cụm
 \subsection{Danh sách tác nhân và use case}
 \begin{table}[H]
 \centering\small
-\begin{tabularx}{\textwidth}{L{1.5cm} L{4.5cm} X}
-\toprule
-\textbf{Mã} & \textbf{Use case} & \textbf{Tác nhân chính} \\
-\midrule
-UC-01 & Đăng nhập & Tất cả tác nhân \\
-UC-02 & Quản lý sản phẩm & ADMIN, MANAGER \\
-UC-03 & Quản lý danh mục & ADMIN, MANAGER \\
-UC-04 & Lập hóa đơn bán hàng & CASHIER, MANAGER, ADMIN \\
-UC-05 & Hủy hóa đơn & MANAGER, ADMIN \\
-UC-06 & Nhập hàng & MANAGER, ADMIN \\
-UC-07 & Kiểm kê / điều chỉnh kho & MANAGER, ADMIN \\
-UC-08 & Quản lý khách hàng & CASHIER, MANAGER, ADMIN \\
-UC-09 & Quản lý nhà cung cấp & MANAGER, ADMIN \\
-UC-10 & Quản lý nhân viên \& chấm công & ADMIN, MANAGER \\
-UC-11 & Xem báo cáo & MANAGER, ADMIN \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{1.5cm}|L{4.5cm}|X|}
+\hline
+\textbf{Mã} & \textbf{Use case} & \textbf{Tác nhân chính} \\ \hline
+UC-01 & Đăng nhập & Tất cả tác nhân \\ \hline
+UC-02 & Quản lý sản phẩm & ADMIN, MANAGER \\ \hline
+UC-03 & Quản lý danh mục & ADMIN, MANAGER \\ \hline
+UC-04 & Lập hóa đơn bán hàng & CASHIER, MANAGER, ADMIN \\ \hline
+UC-05 & Hủy hóa đơn & MANAGER, ADMIN \\ \hline
+UC-06 & Nhập hàng & MANAGER, ADMIN \\ \hline
+UC-07 & Kiểm kê / điều chỉnh kho & MANAGER, ADMIN \\ \hline
+UC-08 & Quản lý khách hàng & CASHIER, MANAGER, ADMIN \\ \hline
+UC-09 & Quản lý nhà cung cấp & MANAGER, ADMIN \\ \hline
+UC-10 & Quản lý nhân viên \& chấm công & ADMIN, MANAGER \\ \hline
+UC-11 & Xem báo cáo & MANAGER, ADMIN \\ \hline
 \end{tabularx}
 \caption{Danh sách use case}
 \end{table}
@@ -431,30 +417,29 @@ UC-11 & Xem báo cáo & MANAGER, ADMIN \\
 % ----- UC-01 -----
 \textbf{UC-01 --- Đăng nhập}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Người dùng đăng nhập để sử dụng hệ thống. \\
-\ucfield{Tác nhân} & Tất cả tác nhân \\
-\ucfield{Tiền điều kiện} & Người dùng có tài khoản hợp lệ. \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Người dùng đăng nhập để sử dụng hệ thống. \\ \hline
+\ucfield{Tác nhân} & Tất cả tác nhân \\ \hline
+\ucfield{Tiền điều kiện} & Người dùng có tài khoản hợp lệ. \\ \hline
 \ucfield{Luồng chính} &
 1.~Người dùng nhập tên đăng nhập và mật khẩu.\newline
 2.~Hệ thống kiểm tra tài khoản và so khớp mật khẩu (đã băm).\newline
 3.~Hệ thống cấp JWT và trả về thông tin người dùng kèm vai trò.\newline
-4.~Giao diện hiển thị menu theo phân quyền của vai trò. \\
-\ucfield{Luồng ngoại lệ} & 2a.~Sai tài khoản/mật khẩu $\rightarrow$ báo lỗi, không cấp token. \\
-\ucfield{Hậu điều kiện} & Người dùng được xác thực, có phiên làm việc. \\
-\bottomrule
+4.~Giao diện hiển thị menu theo phân quyền của vai trò. \\ \hline
+\ucfield{Luồng ngoại lệ} & 2a.~Sai tài khoản/mật khẩu $\rightarrow$ báo lỗi, không cấp token. \\ \hline
+\ucfield{Hậu điều kiện} & Người dùng được xác thực, có phiên làm việc. \\ \hline
 \end{tabularx}
 \end{table}
 
 % ----- UC-04 -----
 \textbf{UC-04 --- Lập hóa đơn bán hàng}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Thu ngân lập hóa đơn cho khách, hệ thống tính tiền và trừ tồn kho. \\
-\ucfield{Tác nhân} & Thu ngân (CASHIER), Quản lý, Quản trị viên \\
-\ucfield{Tiền điều kiện} & Đã đăng nhập; sản phẩm còn tồn kho. \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Thu ngân lập hóa đơn cho khách, hệ thống tính tiền và trừ tồn kho. \\ \hline
+\ucfield{Tác nhân} & Thu ngân (CASHIER), Quản lý, Quản trị viên \\ \hline
+\ucfield{Tiền điều kiện} & Đã đăng nhập; sản phẩm còn tồn kho. \\ \hline
 \ucfield{Luồng chính} &
 1.~Thu ngân chọn các sản phẩm và số lượng.\newline
 2.~Hệ thống kiểm tra sản phẩm tồn tại, đang kinh doanh và đủ tồn kho.\newline
@@ -462,79 +447,74 @@ UC-11 & Xem báo cáo & MANAGER, ADMIN \\
 4.~Thu ngân chọn khách hàng (tùy chọn), nhập giảm giá, chọn hình thức thanh toán.\newline
 5.~Hệ thống tính thành tiền = tiền hàng $-$ giảm giá.\newline
 6.~Trong một transaction: tạo hóa đơn (trạng thái COMPLETED), tạo chi tiết hóa đơn, \textbf{trừ tồn kho} từng sản phẩm và ghi biến động kho loại OUT.\newline
-7.~Hệ thống trả về mã hóa đơn và thành tiền. \\
+7.~Hệ thống trả về mã hóa đơn và thành tiền. \\ \hline
 \ucfield{Luồng ngoại lệ} &
 2a.~Sản phẩm không tồn tại/ngừng kinh doanh $\rightarrow$ báo lỗi.\newline
-2b.~Một sản phẩm không đủ tồn kho $\rightarrow$ báo lỗi, hủy giao dịch (rollback). \\
-\ucfield{Hậu điều kiện} & Hóa đơn được lưu; tồn kho giảm tương ứng; có bản ghi biến động kho. \\
-\bottomrule
+2b.~Một sản phẩm không đủ tồn kho $\rightarrow$ báo lỗi, hủy giao dịch (rollback). \\ \hline
+\ucfield{Hậu điều kiện} & Hóa đơn được lưu; tồn kho giảm tương ứng; có bản ghi biến động kho. \\ \hline
 \end{tabularx}
 \end{table}
 
 % ----- UC-05 -----
 \textbf{UC-05 --- Hủy hóa đơn}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Quản lý hủy một hóa đơn đã hoàn thành và hoàn trả tồn kho. \\
-\ucfield{Tác nhân} & Quản lý, Quản trị viên \\
-\ucfield{Tiền điều kiện} & Hóa đơn tồn tại, chưa bị hủy. \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Quản lý hủy một hóa đơn đã hoàn thành và hoàn trả tồn kho. \\ \hline
+\ucfield{Tác nhân} & Quản lý, Quản trị viên \\ \hline
+\ucfield{Tiền điều kiện} & Hóa đơn tồn tại, chưa bị hủy. \\ \hline
 \ucfield{Luồng chính} &
 1.~Người dùng chọn hóa đơn cần hủy.\newline
-2.~Trong một transaction: với mỗi mặt hàng, \textbf{hoàn lại tồn kho} (biến động kho loại IN) và đổi trạng thái hóa đơn thành CANCELLED. \\
-\ucfield{Luồng ngoại lệ} & 1a.~Hóa đơn đã hủy trước đó $\rightarrow$ báo lỗi. \\
-\ucfield{Hậu điều kiện} & Hóa đơn ở trạng thái CANCELLED; tồn kho được khôi phục. \\
-\bottomrule
+2.~Trong một transaction: với mỗi mặt hàng, \textbf{hoàn lại tồn kho} (biến động kho loại IN) và đổi trạng thái hóa đơn thành CANCELLED. \\ \hline
+\ucfield{Luồng ngoại lệ} & 1a.~Hóa đơn đã hủy trước đó $\rightarrow$ báo lỗi. \\ \hline
+\ucfield{Hậu điều kiện} & Hóa đơn ở trạng thái CANCELLED; tồn kho được khôi phục. \\ \hline
 \end{tabularx}
 \end{table}
 
 % ----- UC-06 -----
 \textbf{UC-06 --- Nhập hàng}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Lập phiếu nhập hàng và cộng tồn kho. \\
-\ucfield{Tác nhân} & Quản lý, Quản trị viên \\
-\ucfield{Tiền điều kiện} & Đã đăng nhập với quyền MANAGER trở lên. \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Lập phiếu nhập hàng và cộng tồn kho. \\ \hline
+\ucfield{Tác nhân} & Quản lý, Quản trị viên \\ \hline
+\ucfield{Tiền điều kiện} & Đã đăng nhập với quyền MANAGER trở lên. \\ \hline
 \ucfield{Luồng chính} &
 1.~Chọn nhà cung cấp; thêm các mặt hàng (sản phẩm, số lượng, đơn giá nhập).\newline
 2.~Hệ thống tính tổng tiền phiếu.\newline
-3.~Trong một transaction: tạo phiếu nhập (trạng thái RECEIVED), tạo chi tiết phiếu, \textbf{cộng tồn kho} từng sản phẩm và ghi biến động kho loại IN. \\
-\ucfield{Luồng ngoại lệ} & 1a.~Có sản phẩm không tồn tại $\rightarrow$ báo lỗi. \\
-\ucfield{Hậu điều kiện} & Phiếu nhập được lưu; tồn kho tăng tương ứng. \\
-\bottomrule
+3.~Trong một transaction: tạo phiếu nhập (trạng thái RECEIVED), tạo chi tiết phiếu, \textbf{cộng tồn kho} từng sản phẩm và ghi biến động kho loại IN. \\ \hline
+\ucfield{Luồng ngoại lệ} & 1a.~Có sản phẩm không tồn tại $\rightarrow$ báo lỗi. \\ \hline
+\ucfield{Hậu điều kiện} & Phiếu nhập được lưu; tồn kho tăng tương ứng. \\ \hline
 \end{tabularx}
 \end{table}
 
 % ----- UC-07 -----
 \textbf{UC-07 --- Kiểm kê / điều chỉnh kho}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Đặt lại tồn kho của một sản phẩm về số lượng đếm được thực tế. \\
-\ucfield{Tác nhân} & Quản lý, Quản trị viên \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Đặt lại tồn kho của một sản phẩm về số lượng đếm được thực tế. \\ \hline
+\ucfield{Tác nhân} & Quản lý, Quản trị viên \\ \hline
 \ucfield{Luồng chính} &
 1.~Chọn sản phẩm và nhập số lượng đếm thực tế.\newline
 2.~Hệ thống tính chênh lệch = số đếm $-$ tồn hiện tại.\newline
-3.~Ghi một biến động kho loại ADJUST và cập nhật tồn kho về số đếm. \\
-\ucfield{Hậu điều kiện} & Tồn kho khớp số thực tế; chênh lệch được lưu vết. \\
-\bottomrule
+3.~Ghi một biến động kho loại ADJUST và cập nhật tồn kho về số đếm. \\ \hline
+\ucfield{Hậu điều kiện} & Tồn kho khớp số thực tế; chênh lệch được lưu vết. \\ \hline
 \end{tabularx}
 \end{table}
 
 % ----- UC-11 -----
 \textbf{UC-11 --- Xem báo cáo}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3cm} X}
-\toprule
-\ucfield{Mô tả} & Quản lý xem các báo cáo thống kê theo khoảng thời gian. \\
-\ucfield{Tác nhân} & Quản lý, Quản trị viên \\
+\begin{tabularx}{\textwidth}{|L{3cm}|X|}
+\hline
+\ucfield{Mô tả} & Quản lý xem các báo cáo thống kê theo khoảng thời gian. \\ \hline
+\ucfield{Tác nhân} & Quản lý, Quản trị viên \\ \hline
 \ucfield{Luồng chính} &
 1.~Người dùng chọn khoảng thời gian (từ ngày -- đến ngày).\newline
 2.~Hệ thống tổng hợp: doanh thu, giá vốn (COGS), lợi nhuận; top sản phẩm bán chạy; doanh thu theo ngày; giá trị tồn kho và danh sách sắp hết.\newline
-3.~Hiển thị số liệu dạng thẻ thống kê, bảng và biểu đồ. \\
-\ucfield{Hậu điều kiện} & Người dùng nắm được tình hình kinh doanh. \\
-\bottomrule
+3.~Hiển thị số liệu dạng thẻ thống kê, bảng và biểu đồ. \\ \hline
+\ucfield{Hậu điều kiện} & Người dùng nắm được tình hình kinh doanh. \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -661,34 +641,8 @@ Các thực thể chính và mối quan hệ (kèm bản số):
 
 \begin{figure}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[every node/.style={ent2, minimum width=2.6cm, font=\scriptsize\bfseries}, >=Stealth]
-  \node (sup)   at (0,4)     {Supplier};
-  \node (po)    at (3.8,4)   {PurchaseOrder};
-  \node (poi)   at (7.6,4)   {POItem};
-  \node (cat)   at (0,2)     {Category};
-  \node (prod)  at (3.8,2)   {Product};
-  \node (oi)    at (7.6,2)   {OrderItem};
-  \node (order) at (11.4,2)  {Order};
-  \node (cust)  at (11.4,4)  {Customer};
-  \node (sm)    at (3.8,0)   {StockMovement};
-  \node (emp)   at (11.4,0)  {Employee};
-  \node (att)   at (15.2,0)  {Attendance};
-  \node (user)  at (11.4,-2) {User};
-
-  \draw[thick] (cat)  -- node[above,font=\scriptsize]{1..N} (prod);
-  \draw[thick] (prod) -- node[above,font=\scriptsize]{1..N} (oi);
-  \draw[thick] (oi)   -- node[above,font=\scriptsize]{N..1} (order);
-  \draw[thick] (cust) -- node[right,font=\scriptsize]{1..N} (order);
-  \draw[thick] (emp)  -- node[right,font=\scriptsize]{1..N} (order);
-  \draw[thick] (user) -- node[right,font=\scriptsize]{1..1} (emp);
-  \draw[thick] (emp)  -- node[above,font=\scriptsize]{1..N} (att);
-  \draw[thick] (prod) -- node[right,font=\scriptsize]{1..N} (sm);
-  \draw[thick] (sup)  -- node[above,font=\scriptsize]{1..N} (po);
-  \draw[thick] (po)   -- node[above,font=\scriptsize]{1..N} (poi);
-  \draw[thick] (poi)  -- node[right,pos=0.45,font=\scriptsize]{N..1} (prod);
-\end{tikzpicture}}
-\caption{Mô hình thực thể -- quan hệ (lược đồ rút gọn)}
+\includegraphics[width=\textwidth]{img/ERD.png}
+\caption{Mô hình thực thể -- quan hệ (ERD)}
 \end{figure}
 
 \subsection{Lược đồ quan hệ}
@@ -710,19 +664,17 @@ Khóa chính gạch chân (\underline{...}); khóa ngoại in nghiêng (\textit{
 
 \subsection{Các kiểu liệt kê (enum)}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3.5cm} X}
-\toprule
-\textbf{Enum} & \textbf{Giá trị} \\
-\midrule
-Role & ADMIN, MANAGER, CASHIER, STAFF \\
-OrderStatus & PENDING, COMPLETED, CANCELLED \\
-PaymentMethod & CASH, CARD, TRANSFER \\
-PurchaseStatus & PENDING, RECEIVED, CANCELLED \\
-StockMovementType & IN, OUT, ADJUST \\
-EmployeeStatus & ACTIVE, ON\_LEAVE, INACTIVE \\
-AttendanceStatus & PRESENT, HALF\_DAY, LEAVE, ABSENT \\
-Gender & MALE, FEMALE, OTHER \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{3.5cm}|X|}
+\hline
+\textbf{Enum} & \textbf{Giá trị} \\ \hline
+Role & ADMIN, MANAGER, CASHIER, STAFF \\ \hline
+OrderStatus & PENDING, COMPLETED, CANCELLED \\ \hline
+PaymentMethod & CASH, CARD, TRANSFER \\ \hline
+PurchaseStatus & PENDING, RECEIVED, CANCELLED \\ \hline
+StockMovementType & IN, OUT, ADJUST \\ \hline
+EmployeeStatus & ACTIVE, ON\_LEAVE, INACTIVE \\ \hline
+AttendanceStatus & PRESENT, HALF\_DAY, LEAVE, ABSENT \\ \hline
+Gender & MALE, FEMALE, OTHER \\ \hline
 \end{tabularx}
 \caption{Các kiểu liệt kê dùng trong hệ thống}
 \end{table}
@@ -730,160 +682,148 @@ Gender & MALE, FEMALE, OTHER \\
 \subsection{Từ điển dữ liệu}
 Bảng dưới đây mô tả chi tiết từng thuộc tính của 12 bảng.
 
-\newcommand{\dicthead}{\toprule \textbf{Thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\ \midrule \endhead}
+\newcommand{\dicthead}{\hline \textbf{Thuộc tính} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\ \hline \endhead}
 
 \textbf{Bảng \texttt{users} --- tài khoản đăng nhập}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-username & VARCHAR, unique & Tên đăng nhập \\
-email & VARCHAR, unique & Email (tùy chọn) \\
-password\_hash & VARCHAR & Mật khẩu đã băm bcrypt \\
-role & ENUM Role & Vai trò người dùng \\
-is\_active & BOOLEAN & Tài khoản còn hiệu lực \\
-created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+username & VARCHAR, unique & Tên đăng nhập \\ \hline
+email & VARCHAR, unique & Email (tùy chọn) \\ \hline
+password\_hash & VARCHAR & Mật khẩu đã băm bcrypt \\ \hline
+role & ENUM Role & Vai trò người dùng \\ \hline
+is\_active & BOOLEAN & Tài khoản còn hiệu lực \\ \hline
+created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{employees} --- hồ sơ nhân viên}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-full\_name & VARCHAR & Họ và tên \\
-phone & VARCHAR & Số điện thoại \\
-email & VARCHAR & Email cá nhân \\
-address & VARCHAR & Địa chỉ \\
-gender & ENUM Gender & Giới tính \\
-date\_of\_birth & DATE & Ngày sinh \\
-citizen\_id & VARCHAR, unique & Số CCCD \\
-emergency\_contact & VARCHAR & Liên hệ khẩn cấp \\
-position & VARCHAR & Chức vụ \\
-salary & DECIMAL(12,2) & Lương \\
-status & ENUM EmployeeStatus & Trạng thái làm việc \\
-hired\_at & DATE & Ngày vào làm \\
-user\_id & INT (FK, unique) & Tài khoản liên kết \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+full\_name & VARCHAR & Họ và tên \\ \hline
+phone & VARCHAR & Số điện thoại \\ \hline
+email & VARCHAR & Email cá nhân \\ \hline
+address & VARCHAR & Địa chỉ \\ \hline
+gender & ENUM Gender & Giới tính \\ \hline
+date\_of\_birth & DATE & Ngày sinh \\ \hline
+citizen\_id & VARCHAR, unique & Số CCCD \\ \hline
+emergency\_contact & VARCHAR & Liên hệ khẩn cấp \\ \hline
+position & VARCHAR & Chức vụ \\ \hline
+salary & DECIMAL(12,2) & Lương \\ \hline
+status & ENUM EmployeeStatus & Trạng thái làm việc \\ \hline
+hired\_at & DATE & Ngày vào làm \\ \hline
+user\_id & INT (FK, unique) & Tài khoản liên kết \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{attendances} --- chấm công}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-employee\_id & INT (FK) & Nhân viên \\
-work\_date & DATE & Ngày chấm công \\
-status & ENUM AttendanceStatus & PRESENT/HALF\_DAY/LEAVE/ABSENT \\
-note & VARCHAR & Ghi chú \\
-created\_at & TIMESTAMP & Thời điểm tạo \\
-\multicolumn{3}{l}{\footnotesize\itshape Ràng buộc: duy nhất theo cặp (employee\_id, work\_date).} \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+employee\_id & INT (FK) & Nhân viên \\ \hline
+work\_date & DATE & Ngày chấm công \\ \hline
+status & ENUM AttendanceStatus & PRESENT/HALF\_DAY/LEAVE/ABSENT \\ \hline
+note & VARCHAR & Ghi chú \\ \hline
+created\_at & TIMESTAMP & Thời điểm tạo \\ \hline
+\multicolumn{3}{|l|}{\footnotesize\itshape Ràng buộc: duy nhất theo cặp (employee\_id, work\_date).} \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{categories} --- danh mục}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-name & VARCHAR, unique & Tên danh mục \\
-description & VARCHAR & Mô tả \\
-created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+name & VARCHAR, unique & Tên danh mục \\ \hline
+description & VARCHAR & Mô tả \\ \hline
+created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{products} --- sản phẩm}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-sku & VARCHAR, unique & Mã sản phẩm \\
-name & VARCHAR & Tên sản phẩm \\
-category\_id & INT (FK) & Danh mục \\
-sale\_price & DECIMAL(12,2) & Giá bán \\
-cost\_price & DECIMAL(12,2) & Giá vốn \\
-stock\_quantity & INT & Tồn kho hiện tại \\
-min\_stock & INT & Ngưỡng tồn tối thiểu \\
-image\_url & VARCHAR & Ảnh sản phẩm \\
-is\_active & BOOLEAN & Còn kinh doanh \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+sku & VARCHAR, unique & Mã sản phẩm \\ \hline
+name & VARCHAR & Tên sản phẩm \\ \hline
+category\_id & INT (FK) & Danh mục \\ \hline
+sale\_price & DECIMAL(12,2) & Giá bán \\ \hline
+cost\_price & DECIMAL(12,2) & Giá vốn \\ \hline
+stock\_quantity & INT & Tồn kho hiện tại \\ \hline
+min\_stock & INT & Ngưỡng tồn tối thiểu \\ \hline
+image\_url & VARCHAR & Ảnh sản phẩm \\ \hline
+is\_active & BOOLEAN & Còn kinh doanh \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{customers} --- khách hàng}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-full\_name & VARCHAR & Họ tên khách \\
-phone & VARCHAR, unique & Số điện thoại \\
-email & VARCHAR & Email \\
-address & VARCHAR & Địa chỉ \\
-points & INT & Điểm tích lũy \\
-created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+full\_name & VARCHAR & Họ tên khách \\ \hline
+phone & VARCHAR, unique & Số điện thoại \\ \hline
+email & VARCHAR & Email \\ \hline
+address & VARCHAR & Địa chỉ \\ \hline
+points & INT & Điểm tích lũy \\ \hline
+created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{suppliers} --- nhà cung cấp}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-name & VARCHAR & Tên nhà cung cấp \\
-phone & VARCHAR & Điện thoại \\
-email & VARCHAR & Email \\
-address & VARCHAR & Địa chỉ \\
-created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+name & VARCHAR & Tên nhà cung cấp \\ \hline
+phone & VARCHAR & Điện thoại \\ \hline
+email & VARCHAR & Email \\ \hline
+address & VARCHAR & Địa chỉ \\ \hline
+created\_at, updated\_at & TIMESTAMP & Thời điểm tạo/cập nhật \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{orders} --- hóa đơn bán hàng}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-code & VARCHAR, unique & Mã hóa đơn (HD00001...) \\
-customer\_id & INT (FK) & Khách hàng (có thể trống) \\
-employee\_id & INT (FK) & Nhân viên lập đơn \\
-total\_amount & DECIMAL(12,2) & Tổng tiền hàng \\
-discount & DECIMAL(12,2) & Giảm giá \\
-final\_amount & DECIMAL(12,2) & Thành tiền \\
-payment\_method & ENUM PaymentMethod & Hình thức thanh toán \\
-status & ENUM OrderStatus & Trạng thái hóa đơn \\
-note & VARCHAR & Ghi chú \\
-created\_at & TIMESTAMP & Thời điểm lập \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+code & VARCHAR, unique & Mã hóa đơn (HD00001...) \\ \hline
+customer\_id & INT (FK) & Khách hàng (có thể trống) \\ \hline
+employee\_id & INT (FK) & Nhân viên lập đơn \\ \hline
+total\_amount & DECIMAL(12,2) & Tổng tiền hàng \\ \hline
+discount & DECIMAL(12,2) & Giảm giá \\ \hline
+final\_amount & DECIMAL(12,2) & Thành tiền \\ \hline
+payment\_method & ENUM PaymentMethod & Hình thức thanh toán \\ \hline
+status & ENUM OrderStatus & Trạng thái hóa đơn \\ \hline
+note & VARCHAR & Ghi chú \\ \hline
+created\_at & TIMESTAMP & Thời điểm lập \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{order\_items} --- chi tiết hóa đơn}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-order\_id & INT (FK) & Hóa đơn \\
-product\_id & INT (FK) & Sản phẩm \\
-quantity & INT & Số lượng \\
-unit\_price & DECIMAL(12,2) & Đơn giá bán tại thời điểm bán \\
-subtotal & DECIMAL(12,2) & Thành tiền dòng \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+order\_id & INT (FK) & Hóa đơn \\ \hline
+product\_id & INT (FK) & Sản phẩm \\ \hline
+quantity & INT & Số lượng \\ \hline
+unit\_price & DECIMAL(12,2) & Đơn giá bán tại thời điểm bán \\ \hline
+subtotal & DECIMAL(12,2) & Thành tiền dòng \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{purchase\_orders} --- phiếu nhập}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-code & VARCHAR, unique & Mã phiếu nhập (PN00001...) \\
-supplier\_id & INT (FK) & Nhà cung cấp \\
-employee\_id & INT (FK) & Người lập phiếu \\
-total\_amount & DECIMAL(12,2) & Tổng tiền nhập \\
-status & ENUM PurchaseStatus & Trạng thái phiếu \\
-note & VARCHAR & Ghi chú \\
-created\_at & TIMESTAMP & Thời điểm nhập \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+code & VARCHAR, unique & Mã phiếu nhập (PN00001...) \\ \hline
+supplier\_id & INT (FK) & Nhà cung cấp \\ \hline
+employee\_id & INT (FK) & Người lập phiếu \\ \hline
+total\_amount & DECIMAL(12,2) & Tổng tiền nhập \\ \hline
+status & ENUM PurchaseStatus & Trạng thái phiếu \\ \hline
+note & VARCHAR & Ghi chú \\ \hline
+created\_at & TIMESTAMP & Thời điểm nhập \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{purchase\_order\_items} --- chi tiết phiếu nhập}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-purchase\_order\_id & INT (FK) & Phiếu nhập \\
-product\_id & INT (FK) & Sản phẩm \\
-quantity & INT & Số lượng nhập \\
-unit\_cost & DECIMAL(12,2) & Đơn giá nhập \\
-subtotal & DECIMAL(12,2) & Thành tiền dòng \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+purchase\_order\_id & INT (FK) & Phiếu nhập \\ \hline
+product\_id & INT (FK) & Sản phẩm \\ \hline
+quantity & INT & Số lượng nhập \\ \hline
+unit\_cost & DECIMAL(12,2) & Đơn giá nhập \\ \hline
+subtotal & DECIMAL(12,2) & Thành tiền dòng \\ \hline
 \end{longtable}
 
 \textbf{Bảng \texttt{stock\_movements} --- biến động kho}
-\begin{longtable}{L{3.3cm} L{3.2cm} L{8.3cm}} \dicthead
-id & SERIAL (PK) & Khóa chính \\
-product\_id & INT (FK) & Sản phẩm \\
-type & ENUM StockMovementType & IN/OUT/ADJUST \\
-quantity & INT & Số lượng thay đổi \\
-reference\_type & VARCHAR & Nguồn: ORDER/PURCHASE/ADJUST \\
-reference\_id & INT & Mã chứng từ liên quan \\
-note & VARCHAR & Ghi chú \\
-created\_at & TIMESTAMP & Thời điểm ghi nhận \\
-\bottomrule
+\begin{longtable}{|L{3.3cm}|L{3.2cm}|L{8.3cm}|} \dicthead
+id & SERIAL (PK) & Khóa chính \\ \hline
+product\_id & INT (FK) & Sản phẩm \\ \hline
+type & ENUM StockMovementType & IN/OUT/ADJUST \\ \hline
+quantity & INT & Số lượng thay đổi \\ \hline
+reference\_type & VARCHAR & Nguồn: ORDER/PURCHASE/ADJUST \\ \hline
+reference\_id & INT & Mã chứng từ liên quan \\ \hline
+note & VARCHAR & Ghi chú \\ \hline
+created\_at & TIMESTAMP & Thời điểm ghi nhận \\ \hline
 \end{longtable}
 
 \subsection{Ràng buộc toàn vẹn}
@@ -902,22 +842,208 @@ created\_at & TIMESTAMP & Thời điểm ghi nhận \\
   \item \textbf{Kiểm kê:} gọi \texttt{stockMovement(..., ADJUST)} với chênh lệch.
 \end{itemize}
 
+\section{Thiết kế chi tiết các module}
+Phần trên trình bày thiết kế \emph{tổng thể} (kiến trúc, cơ sở dữ liệu, xử lý tồn kho dùng chung). Mục này đặc tả \emph{chi tiết riêng} cho từng module nghiệp vụ: trách nhiệm, giao diện lập trình (API), bảng dữ liệu liên quan và quy tắc nghiệp vụ chính. Mỗi module tự chứa bốn tầng \texttt{routes} -- \texttt{controller} -- \texttt{service} -- \texttt{validation}; mọi endpoint có tiền tố \texttt{/api/v1} và yêu cầu JWT (trừ đăng nhập). Cột \emph{Quyền} là vai trò tối thiểu được gọi; ký hiệu ``+'' nghĩa là vai trò đó trở lên.
+
+\subsection{Module Auth --- Xác thực \& phân quyền}
+\textbf{Trách nhiệm:} đăng nhập, cấp và kiểm tra JWT, phân quyền theo vai trò. \textbf{Bảng dữ liệu:} \texttt{users}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+POST & /auth/login & Công khai & Đăng nhập (username/mật khẩu), trả JWT + thông tin tài khoản. \\ \hline
+POST & /auth/register & ADMIN/MANAGER & Tạo tài khoản đăng nhập mới. \\ \hline
+GET & /auth/me & Đã đăng nhập & Lấy thông tin tài khoản hiện tại từ token. \\ \hline
+\end{tabularx}
+\caption{API module Auth}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Mật khẩu lưu dưới dạng băm \texttt{bcrypt}; đăng nhập so khớp băm, không lưu mật khẩu thô.
+  \item Đăng nhập thành công ký JWT chứa \texttt{userId} và \texttt{role}, hạn dùng theo \texttt{JWT\_EXPIRES\_IN}.
+  \item \texttt{username} là duy nhất; tài khoản bị khóa (\texttt{is\_active=false}) không đăng nhập được.
+\end{itemize}
+
+\subsection{Module Products --- Sản phẩm}
+\textbf{Trách nhiệm:} quản lý danh mục bánh (giá bán, giá vốn, tồn kho, ngưỡng tối thiểu). \textbf{Bảng dữ liệu:} \texttt{products} (thuộc \texttt{categories}).
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /products & Đã đăng nhập & Danh sách, lọc \texttt{?search=\&categoryId=\&page=\&limit=}. \\ \hline
+GET & /products/:id & Đã đăng nhập & Chi tiết một sản phẩm. \\ \hline
+POST & /products & ADMIN/MANAGER & Tạo sản phẩm mới. \\ \hline
+PUT & /products/:id & ADMIN/MANAGER & Cập nhật thông tin/giá. \\ \hline
+DELETE & /products/:id & ADMIN/MANAGER & Ngừng kinh doanh (ẩn mềm). \\ \hline
+\end{tabularx}
+\caption{API module Products}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item \texttt{sku} là duy nhất; \texttt{sale\_price}, \texttt{cost\_price} $\ge 0$.
+  \item Xóa là \emph{ẩn mềm} (\texttt{is\_active=false}) để giữ lịch sử hóa đơn/nhập hàng liên quan.
+  \item \texttt{stock\_quantity} chỉ thay đổi qua dịch vụ kho dùng chung, không sửa trực tiếp.
+\end{itemize}
+
+\subsection{Module Categories --- Danh mục}
+\textbf{Trách nhiệm:} phân loại sản phẩm (bánh kem, bánh mì\ldots). \textbf{Bảng dữ liệu:} \texttt{categories}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /categories & Đã đăng nhập & Danh sách kèm số sản phẩm mỗi danh mục. \\ \hline
+GET & /categories/:id & Đã đăng nhập & Chi tiết danh mục. \\ \hline
+POST & /categories & ADMIN/MANAGER & Tạo danh mục. \\ \hline
+PUT & /categories/:id & ADMIN/MANAGER & Cập nhật. \\ \hline
+DELETE & /categories/:id & ADMIN/MANAGER & Xóa --- chặn nếu còn sản phẩm. \\ \hline
+\end{tabularx}
+\caption{API module Categories}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:} \texttt{name} duy nhất; chặn xóa danh mục còn sản phẩm (trả lỗi 409) để bảo đảm toàn vẹn tham chiếu.
+
+\subsection{Module Sales --- Bán hàng (POS)}
+\textbf{Trách nhiệm:} lập hóa đơn bán, tự động trừ tồn kho, hủy đơn hoàn kho. \textbf{Bảng dữ liệu:} \texttt{orders}, \texttt{order\_items} (gọi dịch vụ kho).
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3.2cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /sales & Đã đăng nhập & Danh sách đơn, lọc \texttt{?status=\&customerId=}. \\ \hline
+GET & /sales/:id & Đã đăng nhập & Chi tiết đơn + các dòng hàng. \\ \hline
+POST & /sales & CASHIER+ & Tạo đơn --- \textbf{tự động trừ tồn kho}. \\ \hline
+PATCH & /sales/:id/cancel & ADMIN/MANAGER & Hủy đơn --- \textbf{hoàn lại tồn kho}. \\ \hline
+\end{tabularx}
+\caption{API module Sales}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Mã hóa đơn \texttt{HD0001}\ldots\ sinh tự động tăng dần.
+  \item Khi tạo: kiểm tra mọi sản phẩm \emph{tồn tại}, \emph{đang kinh doanh} và \emph{đủ tồn kho}; nếu thiếu thì từ chối cả đơn.
+  \item Đơn giá lấy theo \texttt{sale\_price} tại thời điểm bán; \texttt{final\_amount = max(0, tổng tiền hàng $-$ giảm giá)}.
+  \item Tạo hóa đơn + chi tiết + trừ kho (\texttt{OUT}) gói trong \emph{một transaction}; lỗi bất kỳ bước nào thì rollback toàn bộ.
+  \item Hủy đơn: hoàn kho (\texttt{IN}) rồi đặt trạng thái \texttt{CANCELLED}; chặn hủy đơn đã hủy.
+\end{itemize}
+
+\subsection{Module Inventory --- Kho}
+\textbf{Trách nhiệm:} dịch vụ tồn kho \emph{dùng chung}, cảnh báo hết hàng, lịch sử biến động, kiểm kê. \textbf{Bảng dữ liệu:} \texttt{stock\_movements}, cập nhật \texttt{products.stock\_quantity}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3.2cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /inventory/low-stock & Đã đăng nhập & Sản phẩm có tồn $\le$ ngưỡng tối thiểu. \\ \hline
+GET & /inventory/history & Đã đăng nhập & Lịch sử xuất/nhập, lọc \texttt{?productId=}. \\ \hline
+POST & /inventory/adjust & ADMIN/MANAGER & Kiểm kê: đặt tồn về số đếm thực tế. \\ \hline
+\end{tabularx}
+\caption{API module Inventory}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Hàm \texttt{stockMovement(productId, quantity, type)} là \emph{cổng duy nhất} đổi tồn kho: ghi một dòng \texttt{stock\_movements} và cộng/trừ \texttt{stock\_quantity} (\texttt{IN} cộng, \texttt{OUT} trừ, \texttt{ADJUST} đặt lại) --- nhận \texttt{tx} để tham gia transaction lớn hơn.
+  \item Kiểm kê ghi nhận chênh lệch \texttt{|đếm thực $-$ tồn hệ thống|} dưới loại \texttt{ADJUST}.
+\end{itemize}
+
+\subsection{Module Purchasing --- Nhập hàng}
+\textbf{Trách nhiệm:} lập phiếu nhập từ nhà cung cấp, tự động cộng tồn kho. \textbf{Bảng dữ liệu:} \texttt{purchase\_orders}, \texttt{purchase\_order\_items}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3.2cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /purchasing & Đã đăng nhập & Danh sách phiếu nhập, lọc \texttt{?supplierId=}. \\ \hline
+GET & /purchasing/:id & Đã đăng nhập & Chi tiết phiếu nhập. \\ \hline
+POST & /purchasing & ADMIN/MANAGER & Tạo phiếu --- \textbf{tự động cộng tồn kho}. \\ \hline
+\end{tabularx}
+\caption{API module Purchasing}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:} mã phiếu \texttt{PN0001}\ldots\ tự sinh; \texttt{subtotal = đơn giá nhập $\times$ số lượng}; tạo phiếu + chi tiết + cộng kho (\texttt{IN}) trong một transaction; phiếu mặc định trạng thái \texttt{RECEIVED}.
+
+\subsection{Module Suppliers --- Nhà cung cấp}
+\textbf{Trách nhiệm:} quản lý thông tin nhà cung cấp, liên kết phiếu nhập. \textbf{Bảng dữ liệu:} \texttt{suppliers}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3cm}|L{2.7cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /suppliers & Đã đăng nhập & Danh sách, lọc \texttt{?search=}. \\ \hline
+GET & /suppliers/:id & Đã đăng nhập & Chi tiết. \\ \hline
+POST & /suppliers & ADMIN/MANAGER & Tạo nhà cung cấp. \\ \hline
+PUT & /suppliers/:id & ADMIN/MANAGER & Cập nhật. \\ \hline
+DELETE & /suppliers/:id & ADMIN/MANAGER & Xóa --- chặn nếu còn phiếu nhập. \\ \hline
+\end{tabularx}
+\caption{API module Suppliers}
+\end{table}
+
+\subsection{Module Customers --- Khách hàng}
+\textbf{Trách nhiệm:} quản lý khách hàng và điểm tích lũy. \textbf{Bảng dữ liệu:} \texttt{customers}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3cm}|L{2.9cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /customers & Đã đăng nhập & Danh sách / tìm kiếm khách hàng. \\ \hline
+GET & /customers/:id & Đã đăng nhập & Chi tiết khách hàng. \\ \hline
+POST & /customers & CASHIER+ & Tạo khách (SĐT là duy nhất). \\ \hline
+PUT & /customers/:id & CASHIER+ & Cập nhật thông tin. \\ \hline
+DELETE & /customers/:id & ADMIN/MANAGER & Xóa khách hàng. \\ \hline
+\end{tabularx}
+\caption{API module Customers}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:} số điện thoại (\texttt{phone}) là duy nhất; thu ngân được tạo/sửa khách ngay tại màn hình bán hàng.
+
+\subsection{Module Employees --- Nhân viên}
+\textbf{Trách nhiệm:} hồ sơ nhân viên, chấm công, đánh giá hiệu suất. \textbf{Bảng dữ liệu:} \texttt{employees}, \texttt{attendances} (liên kết \texttt{users}).
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3.2cm}|L{2.5cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /employees & ADMIN/MANAGER & Danh sách nhân viên, tìm theo tên/chức vụ. \\ \hline
+GET & /employees/:id & ADMIN/MANAGER & Chi tiết hồ sơ. \\ \hline
+GET & /employees/:id/detail & ADMIN/MANAGER & Hồ sơ + số công + hiệu suất + đánh giá. \\ \hline
+POST & /employees & ADMIN & Tạo hồ sơ nhân viên. \\ \hline
+PUT & /employees/:id & ADMIN/MANAGER & Cập nhật hồ sơ/trạng thái. \\ \hline
+DELETE & /employees/:id & ADMIN & Cho nghỉ việc (chuyển \texttt{INACTIVE}). \\ \hline
+\end{tabularx}
+\caption{API module Employees}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item \texttt{citizen\_id} và \texttt{user\_id} là duy nhất; một tài khoản liên kết tối đa một nhân viên.
+  \item Cho nghỉ việc là \emph{ẩn mềm} (\texttt{status=INACTIVE}) --- vẫn giữ hồ sơ, lịch sử đơn và chấm công.
+  \item Số công: \texttt{PRESENT}${}=1$, \texttt{HALF\_DAY}${}=0{,}5$, \texttt{LEAVE/ABSENT}${}=0$; tổng hợp theo tháng/quý/năm.
+  \item Hiệu suất tính trên đơn \texttt{COMPLETED} do nhân viên lập; đánh giá theo số công tháng: $\ge 24$ Xuất sắc, $\ge 20$ Tốt, $\ge 14$ Khá, còn lại Cần cải thiện.
+\end{itemize}
+
+\subsection{Module Reports --- Báo cáo}
+\textbf{Trách nhiệm:} tổng hợp doanh thu, lợi nhuận, sản phẩm bán chạy, giá trị tồn kho. \textbf{Bảng dữ liệu:} đọc tổng hợp từ \texttt{orders}, \texttt{order\_items}, \texttt{products}.
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{|L{1.4cm}|L{3.6cm}|L{2.3cm}|X|}
+\hline
+\textbf{Method} & \textbf{Endpoint} & \textbf{Quyền} & \textbf{Mô tả} \\ \hline
+GET & /reports/revenue & ADMIN/MANAGER & Doanh thu, giá vốn, lợi nhuận theo \texttt{?from=\&to=}. \\ \hline
+GET & /reports/revenue-by-day & ADMIN/MANAGER & Doanh thu theo từng ngày (cho biểu đồ). \\ \hline
+GET & /reports/top-products & ADMIN/MANAGER & Top sản phẩm bán chạy (\texttt{?limit=}). \\ \hline
+GET & /reports/inventory & ADMIN/MANAGER & Giá trị tồn kho, danh sách sắp hết. \\ \hline
+\end{tabularx}
+\caption{API module Reports}
+\end{table}
+\textbf{Quy tắc nghiệp vụ:}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Chỉ tính trên đơn \texttt{COMPLETED}. Giá vốn hàng bán \texttt{COGS} ${}={}$ tổng các (số lượng $\times$ giá vốn); lợi nhuận ${}={}$ doanh thu $-$ \texttt{COGS}.
+  \item Doanh thu theo ngày dùng truy vấn tổng hợp \texttt{date\_trunc('day', \ldots)} gom nhóm theo ngày.
+  \item Top sản phẩm gom nhóm theo \texttt{product\_id}, sắp xếp giảm dần theo số lượng bán.
+  \item Báo cáo tồn kho: \texttt{stockValue} ${}={}$ tổng (tồn $\times$ giá vốn), \texttt{retailValue} ${}={}$ tổng (tồn $\times$ giá bán), kèm danh sách tồn $\le$ ngưỡng.
+\end{itemize}
+
 \section{Thiết kế giao diện}
 Giao diện gồm trang \textbf{đăng nhập} và \textbf{bố cục chính} (thanh điều hướng bên trái + thanh tiêu đề + vùng nội dung). Menu hiển thị \emph{theo vai trò}. Các màn hình chính:
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3.2cm} X}
-\toprule
-\textbf{Màn hình} & \textbf{Chức năng chính} \\
-\midrule
-Bán hàng (POS) & Danh sách hóa đơn; tạo đơn (chọn SP, KH, giảm giá, thanh toán); xem chi tiết; hủy đơn. \\
-Sản phẩm & Bảng sản phẩm; thêm/sửa/ngừng; lọc theo danh mục. \\
-Danh mục & CRUD danh mục kèm số sản phẩm. \\
-Kho & Tab cảnh báo hết hàng; lịch sử xuất/nhập; nút kiểm kê. \\
-Nhập hàng & Danh sách phiếu; tạo phiếu nhiều mặt hàng. \\
-Nhà cung cấp / Khách hàng & Danh sách + CRUD. \\
-Nhân viên & Danh sách; hồ sơ chi tiết (chấm công, hiệu suất, đánh giá). \\
-Báo cáo & Thẻ thống kê doanh thu/lợi nhuận; top sản phẩm; tồn kho; lọc theo thời gian. \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{3.2cm}|X|}
+\hline
+\textbf{Màn hình} & \textbf{Chức năng chính} \\ \hline
+Bán hàng (POS) & Danh sách hóa đơn; tạo đơn (chọn SP, KH, giảm giá, thanh toán); xem chi tiết; hủy đơn. \\ \hline
+Sản phẩm & Bảng sản phẩm; thêm/sửa/ngừng; lọc theo danh mục. \\ \hline
+Danh mục & CRUD danh mục kèm số sản phẩm. \\ \hline
+Kho & Tab cảnh báo hết hàng; lịch sử xuất/nhập; nút kiểm kê. \\ \hline
+Nhập hàng & Danh sách phiếu; tạo phiếu nhiều mặt hàng. \\ \hline
+Nhà cung cấp / Khách hàng & Danh sách + CRUD. \\ \hline
+Nhân viên & Danh sách; hồ sơ chi tiết (chấm công, hiệu suất, đánh giá). \\ \hline
+Báo cáo & Thẻ thống kê doanh thu/lợi nhuận; top sản phẩm; tồn kho; lọc theo thời gian. \\ \hline
 \end{tabularx}
 \caption{Các màn hình chính của hệ thống}
 \end{table}
@@ -941,19 +1067,17 @@ Báo cáo & Thẻ thống kê doanh thu/lợi nhuận; top sản phẩm; tồn k
 
 \section{Công nghệ và công cụ}
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{3.2cm} X}
-\toprule
-\textbf{Thành phần} & \textbf{Công nghệ} \\
-\midrule
-Frontend & React 18 + Vite + TypeScript + Ant Design 5 \\
-Backend & Node.js + Express + TypeScript \\
-Cơ sở dữ liệu & PostgreSQL \\
-ORM & Prisma \\
-Xác thực & JWT + bcrypt \\
-Kiểm tra dữ liệu & Zod \\
-Đóng gói & Docker, Docker Compose \\
-Quản lý mã nguồn & Git \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{3.2cm}|X|}
+\hline
+\textbf{Thành phần} & \textbf{Công nghệ} \\ \hline
+Frontend & React 18 + Vite + TypeScript + Ant Design 5 \\ \hline
+Backend & Node.js + Express + TypeScript \\ \hline
+Cơ sở dữ liệu & PostgreSQL \\ \hline
+ORM & Prisma \\ \hline
+Xác thực & JWT + bcrypt \\ \hline
+Kiểm tra dữ liệu & Zod \\ \hline
+Đóng gói & Docker, Docker Compose \\ \hline
+Quản lý mã nguồn & Git \\ \hline
 \end{tabularx}
 \caption{Công nghệ và công cụ sử dụng}
 \end{table}
@@ -973,18 +1097,16 @@ Báo cáo doanh thu trên dữ liệu mẫu cho thấy hệ thống tính đúng
 \section{Kiểm thử}
 Một số ca kiểm thử tiêu biểu đã thực hiện:
 \begin{table}[H]\centering\small
-\begin{tabularx}{\textwidth}{L{1.3cm} L{4.4cm} X C{2cm}}
-\toprule
-\textbf{Mã} & \textbf{Ca kiểm thử} & \textbf{Kết quả mong đợi} & \textbf{Kết quả} \\
-\midrule
-TC-01 & Đăng nhập sai mật khẩu & Báo lỗi, không cấp token & Đạt \\
-TC-02 & Bán hàng vượt tồn kho & Báo lỗi, không tạo đơn & Đạt \\
-TC-03 & Bán hàng hợp lệ & Tạo đơn, tồn kho giảm đúng & Đạt \\
-TC-04 & Hủy đơn & Tồn kho được hoàn lại & Đạt \\
-TC-05 & Nhập hàng & Tồn kho tăng đúng & Đạt \\
-TC-06 & STAFF mở trang Báo cáo & Bị chặn (403/điều hướng) & Đạt \\
-TC-07 & Nghỉ việc nhân viên & Đổi trạng thái, vẫn lưu hồ sơ & Đạt \\
-\bottomrule
+\begin{tabularx}{\textwidth}{|L{1.3cm}|L{4.4cm}|X|C{2cm}|}
+\hline
+\textbf{Mã} & \textbf{Ca kiểm thử} & \textbf{Kết quả mong đợi} & \textbf{Kết quả} \\ \hline
+TC-01 & Đăng nhập sai mật khẩu & Báo lỗi, không cấp token & Đạt \\ \hline
+TC-02 & Bán hàng vượt tồn kho & Báo lỗi, không tạo đơn & Đạt \\ \hline
+TC-03 & Bán hàng hợp lệ & Tạo đơn, tồn kho giảm đúng & Đạt \\ \hline
+TC-04 & Hủy đơn & Tồn kho được hoàn lại & Đạt \\ \hline
+TC-05 & Nhập hàng & Tồn kho tăng đúng & Đạt \\ \hline
+TC-06 & STAFF mở trang Báo cáo & Bị chặn (403/điều hướng) & Đạt \\ \hline
+TC-07 & Nghỉ việc nhân viên & Đổi trạng thái, vẫn lưu hồ sơ & Đạt \\ \hline
 \end{tabularx}
 \caption{Một số ca kiểm thử tiêu biểu}
 \end{table}
