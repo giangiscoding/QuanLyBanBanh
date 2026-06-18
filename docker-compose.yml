@@ -1,6 +1,14 @@
-# Chay PostgreSQL cho moi truong dev.
-# Cach dung:  docker compose up -d
-# Tat:        docker compose down   (them -v de xoa luon du lieu)
+# Dong goi toan bo he thong bang Docker.
+#
+#   docker compose up -d --build      # build + chay ca 3 dich vu
+#   docker compose up -d postgres     # chi chay PostgreSQL (cho moi truong dev)
+#   docker compose down               # tat (them -v de xoa luon du lieu)
+#
+# Sau khi chay lan dau, nap du lieu mau:
+#   docker compose exec backend npm run seed
+#
+# Truy cap:  Frontend http://localhost:8080   |   API http://localhost:3000
+
 services:
   postgres:
     image: postgres:16-alpine
@@ -11,9 +19,49 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: banbanh
     ports:
-      - '5432:5432'
+      # Publish ra 5433 de tranh dung voi PostgreSQL cai san tren may (5432).
+      # Backend trong mang Docker van ket noi qua 'postgres:5432'.
+      - '5433:5432'
     volumes:
       - banbanh_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d banbanh']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: banbanh-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+      DATABASE_URL: 'postgresql://postgres:password@postgres:5432/banbanh?schema=public'
+      JWT_SECRET: 'doi-thanh-chuoi-bi-mat-cua-ban-trong-production'
+      JWT_EXPIRES_IN: '7d'
+      CORS_ORIGIN: 'http://localhost:8080'
+      # Dat 'true' o lan chay dau de tu dong nap du lieu mau (se xoa du lieu cu).
+      SEED_ON_START: 'false'
+    ports:
+      - '3000:3000'
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -qO- http://localhost:3000/health || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  frontend:
+    build: ./frontend
+    container_name: banbanh-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - '8080:80'
 
 volumes:
   banbanh_pgdata:

@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.*
+npm-debug.log*
+*.log
+.git
+.DS_Store
+prisma/banbanh_dump.sql
