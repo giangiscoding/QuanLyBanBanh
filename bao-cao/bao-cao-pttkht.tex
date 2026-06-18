@@ -1,0 +1,559 @@
+% =====================================================================
+%  BAO CAO HOC PHAN: PHAN TICH VA THIET KE HE THONG
+%  De tai: Xay dung He thong Quan ly Ban Banh
+%  Bien dich:  xelatex bao-cao-pttkht.tex  (chay 2 lan de cap nhat muc luc)
+% =====================================================================
+\documentclass[12pt,a4paper]{report}
+
+% ---- Font & ngon ngu (XeLaTeX) ----
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[AutoFakeBold=2.5]
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+\setotherlanguage{english}
+
+% ---- Trinh bay trang ----
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{indentfirst}
+\usepackage{parskip}
+
+% ---- Bang bieu & hinh anh ----
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% ---- Danh sach, mau, lien ket ----
+\usepackage{enumitem}
+\usepackage{xcolor}
+\definecolor{primary}{RGB}{196,62,15}
+\definecolor{ink}{RGB}{33,37,41}
+\usepackage[colorlinks=true,linkcolor=primary,urlcolor=primary,citecolor=primary]{hyperref}
+
+% ---- Header/Footer ----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape He thong Quan ly Ban Banh}
+\fancyhead[R]{\small Phan tich \& Thiet ke He thong}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- So do (TikZ) ----
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta,fit,backgrounds}
+\tikzset{
+  proc/.style={rectangle, rounded corners, draw=primary, thick, fill=primary!8,
+               align=center, minimum height=1cm, inner sep=6pt},
+  ent/.style={rectangle, draw=ink, thick, fill=ink!5, align=center,
+              minimum height=0.9cm, inner sep=6pt},
+  uc/.style={ellipse, draw=primary, thick, fill=primary!6, align=center,
+             minimum height=0.8cm, inner sep=3pt, font=\small},
+  actor/.style={rectangle, draw=ink, thick, fill=ink!8, align=center,
+                minimum width=2.2cm, minimum height=0.9cm, font=\small\bfseries},
+  box/.style={rectangle, rounded corners, draw=primary, very thick, fill=primary!6,
+              text width=12cm, align=center, minimum height=1.4cm},
+  flow/.style={-{Stealth[length=2.5mm]}, thick},
+}
+
+% ---- Tieu de chuong/muc ----
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{primary}}{\chaptertitlename\ \thechapter}{12pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+\begin{document}
+
+% =====================================================================
+%  TRANG BIA
+% =====================================================================
+\begin{titlepage}
+\centering
+{\large TRƯỜNG ĐẠI HỌC \ldots\ldots\ldots\ldots\ldots\par}
+{\large KHOA CÔNG NGHỆ THÔNG TIN\par}
+\vspace{0.4cm}
+\rule{\textwidth}{0.5pt}
+
+\vfill
+{\scshape\large Báo cáo học phần\par}
+\vspace{0.5cm}
+{\Huge\bfseries\color{primary} PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG\par}
+\vspace{1.2cm}
+{\large Đề tài:\par}
+\vspace{0.3cm}
+{\LARGE\bfseries XÂY DỰNG HỆ THỐNG\\[0.3cm] QUẢN LÝ BÁN BÁNH\par}
+\vspace{0.4cm}
+{\large (Bakery Management System)\par}
+\vfill
+
+\begin{flushleft}
+\hspace{2cm}\begin{tabular}{ll}
+\textbf{Giảng viên hướng dẫn:} & \ldots\ldots\ldots\ldots\ldots\ldots\ldots \\[4pt]
+\textbf{Nhóm thực hiện:}       & Nhóm \ldots \\[4pt]
+\textbf{Lớp:}                  & \ldots\ldots\ldots\ldots \\[4pt]
+\textbf{Học kỳ:}               & \ldots\ldots, năm học 20\ldots--20\ldots \\
+\end{tabular}
+\end{flushleft}
+
+\vfill
+{\large TP. \ldots\ldots\ldots, tháng \ldots\ năm 20\ldots\par}
+\end{titlepage}
+
+% =====================================================================
+%  BANG PHAN CONG CONG VIEC
+% =====================================================================
+\chapter*{Bảng phân công công việc}
+\addcontentsline{toc}{chapter}{Bảng phân công công việc}
+\markboth{Bảng phân công công việc}{}
+
+Nhóm gồm \textbf{3 thành viên}, chia việc \textbf{theo chiều dọc (full-stack theo cụm module)} --- mỗi người sở hữu trọn vẹn một số module từ cơ sở dữ liệu, backend đến giao diện. Cách chia này bám sát kiến trúc \emph{modular} của hệ thống, giảm xung đột mã nguồn và phân định trách nhiệm rõ ràng.
+
+\renewcommand{\arraystretch}{1.4}
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{C{0.5cm} L{3.1cm} L{2.2cm} X C{1.6cm}}
+\toprule
+\textbf{STT} & \textbf{Họ và tên} & \textbf{MSSV} & \textbf{Nhiệm vụ phụ trách} & \textbf{Hoàn thành} \\
+\midrule
+1 & \ldots\ldots\ldots\ldots\ (Nhóm trưởng) & \ldots\ldots &
+\textbf{Nền tảng \& Sản phẩm.} Thiết lập kiến trúc, CSDL chung; module \textit{Auth} (đăng nhập, JWT), \textbf{phân quyền theo vai trò}, layout/điều hướng; module \textit{Products} \& \textit{Categories}; module \textit{Reports} (doanh thu, lợi nhuận, tồn kho). Tổng hợp \& viết báo cáo. & 100\% \\
+\midrule
+2 & \ldots\ldots\ldots\ldots & \ldots\ldots &
+\textbf{Luồng Cung ứng -- Kho.} Module \textit{Suppliers} (nhà cung cấp); module \textit{Purchasing} (lập phiếu nhập, tự động cộng tồn kho); module \textit{Inventory} (cảnh báo hết hàng, lịch sử xuất/nhập, kiểm kê). Định nghĩa service tồn kho dùng chung. & 100\% \\
+\midrule
+3 & \ldots\ldots\ldots\ldots & \ldots\ldots &
+\textbf{Luồng Bán hàng \& Nhân sự.} Module \textit{Sales} (màn hình bán hàng POS, lập hóa đơn, tự động trừ tồn kho, hủy đơn hoàn kho); module \textit{Customers}; module \textit{Employees} (hồ sơ cá nhân, CCCD, chấm công, đánh giá hiệu suất). & 100\% \\
+\bottomrule
+\end{tabularx}
+\caption{Bảng phân công nhiệm vụ giữa các thành viên}
+\end{table}
+\renewcommand{\arraystretch}{1.0}
+
+\noindent\textbf{Điểm phối hợp quan trọng --- Module Kho (Inventory):} đây là điểm giao của cả ba luồng. Thành viên 2 \emph{sở hữu} module Kho và cung cấp một hàm dùng chung \texttt{stockMovement(\{productId, quantity, type\})}; Thành viên 3 (Bán hàng) chỉ \emph{gọi} hàm này để trừ kho, không tự sửa bảng kho --- bảo đảm tồn kho luôn nhất quán.
+
+% =====================================================================
+%  MUC LUC
+% =====================================================================
+\tableofcontents
+\thispagestyle{fancy}
+
+% =====================================================================
+%  LOI MO DAU
+% =====================================================================
+\chapter*{Lời mở đầu}
+\addcontentsline{toc}{chapter}{Lời mở đầu}
+
+Trong bối cảnh chuyển đổi số, việc ứng dụng phần mềm vào quản lý kinh doanh giúp các cửa hàng vừa và nhỏ tiết kiệm thời gian, hạn chế sai sót và ra quyết định dựa trên số liệu. Cửa hàng bánh là mô hình kinh doanh có đặc thù: hàng hóa đa dạng, hạn sử dụng ngắn, biến động tồn kho liên tục do vừa \emph{bán ra} vừa \emph{nhập vào} trong ngày.
+
+Xuất phát từ thực tế đó, nhóm chọn đề tài \textbf{``Xây dựng Hệ thống Quản lý Bán Bánh''} cho học phần \textit{Phân tích và Thiết kế Hệ thống}. Mục tiêu là vận dụng quy trình phân tích -- thiết kế (khảo sát, mô hình hóa chức năng, dữ liệu) để xây dựng một hệ thống hoàn chỉnh, có khả năng: bán hàng (POS), quản lý kho, nhập hàng, quản lý sản phẩm, khách hàng, nhân viên và lập báo cáo thống kê.
+
+Báo cáo gồm 4 chương: \textbf{Chương 1} khảo sát hiện trạng và xác định yêu cầu; \textbf{Chương 2} phân tích hệ thống (chức năng, use case, luồng dữ liệu); \textbf{Chương 3} thiết kế hệ thống (kiến trúc, cơ sở dữ liệu, giao diện); \textbf{Chương 4} cài đặt và kết quả đạt được.
+
+% =====================================================================
+%  CHUONG 1
+% =====================================================================
+\chapter{Khảo sát hiện trạng và xác định yêu cầu}
+
+\section{Giới thiệu đề tài}
+Hệ thống Quản lý Bán Bánh là ứng dụng web hỗ trợ vận hành một cửa hàng bánh: quản lý danh mục sản phẩm, bán hàng tại quầy, theo dõi tồn kho, nhập hàng từ nhà cung cấp, quản lý khách hàng -- nhân viên và cung cấp các báo cáo phục vụ quản lý. Hệ thống hướng tới ba nhóm người dùng: \textbf{quản trị/quản lý}, \textbf{thu ngân} và \textbf{nhân viên bán hàng}.
+
+\section{Khảo sát hiện trạng}
+Qua khảo sát hoạt động của các cửa hàng bánh quy mô vừa và nhỏ, nhóm ghi nhận quy trình thủ công hiện tại và những hạn chế:
+
+\begin{itemize}[leftmargin=1.4cm]
+  \item \textbf{Bán hàng:} ghi hóa đơn bằng tay hoặc máy tính tiền đơn giản, khó tra cứu lịch sử, dễ tính nhầm tiền và giảm giá.
+  \item \textbf{Tồn kho:} kiểm đếm thủ công cuối ngày, không biết tức thời mặt hàng nào sắp hết; thất thoát khó phát hiện.
+  \item \textbf{Nhập hàng:} ghi sổ riêng, không liên kết với tồn kho nên số liệu lệch nhau.
+  \item \textbf{Báo cáo:} tổng hợp doanh thu/lợi nhuận thủ công, mất thời gian và thiếu chính xác.
+  \item \textbf{Nhân sự:} chấm công và theo dõi hiệu suất bán hàng chưa có công cụ hỗ trợ.
+\end{itemize}
+
+\section{Phát biểu bài toán}
+Cần xây dựng một hệ thống thông tin \textbf{tập trung} thay thế quy trình thủ công, bảo đảm:
+(1)~lập hóa đơn nhanh và \emph{tự động trừ tồn kho};
+(2)~nhập hàng \emph{tự động cộng tồn kho};
+(3)~mọi thay đổi tồn kho đều được ghi nhận để truy vết;
+(4)~phân quyền truy cập theo vai trò;
+(5)~báo cáo doanh thu, lợi nhuận, tồn kho theo thời gian.
+
+\section{Yêu cầu chức năng}
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\textwidth}{L{2.6cm} X}
+\toprule
+\textbf{Nhóm chức năng} & \textbf{Mô tả} \\
+\midrule
+Xác thực \& phân quyền & Đăng nhập bằng JWT; phân quyền 4 vai trò ADMIN, MANAGER, CASHIER, STAFF. \\
+Bán hàng (POS) & Tạo hóa đơn, chọn sản phẩm, áp dụng giảm giá, chọn hình thức thanh toán; tự động trừ tồn kho; hủy đơn và hoàn kho; xem lịch sử. \\
+Sản phẩm \& Danh mục & Thêm/sửa/ngừng kinh doanh sản phẩm; quản lý danh mục bánh. \\
+Quản lý kho & Cảnh báo sản phẩm dưới mức tồn tối thiểu; xem lịch sử xuất/nhập; kiểm kê điều chỉnh tồn. \\
+Nhập hàng & Lập phiếu nhập từ nhà cung cấp; tự động cộng tồn kho. \\
+Nhà cung cấp & Quản lý thông tin nhà cung cấp. \\
+Khách hàng & Quản lý khách hàng, điểm tích lũy. \\
+Nhân viên & Quản lý hồ sơ (CCCD, ngày sinh, liên hệ...), trạng thái, chấm công và đánh giá hiệu suất. \\
+Báo cáo & Doanh thu, giá vốn, lợi nhuận theo khoảng thời gian; top sản phẩm bán chạy; giá trị tồn kho. \\
+\bottomrule
+\end{tabularx}
+\caption{Tổng hợp yêu cầu chức năng}
+\end{table}
+
+\section{Yêu cầu phi chức năng}
+\begin{itemize}[leftmargin=1.4cm]
+  \item \textbf{Bảo mật:} mật khẩu băm bằng bcrypt; xác thực JWT; kiểm tra quyền ở cả backend và giao diện.
+  \item \textbf{Toàn vẹn dữ liệu:} thao tác nhiều bảng (bán/nhập hàng) bọc trong transaction; tồn kho chỉ thay đổi qua một dịch vụ duy nhất.
+  \item \textbf{Hiệu năng:} truy vấn có phân trang; chỉ mục trên các khóa.
+  \item \textbf{Khả năng mở rộng \& bảo trì:} kiến trúc modular, tách tầng controller -- service -- truy vấn.
+  \item \textbf{Khả dụng:} giao diện tiếng Việt, responsive, dễ dùng cho thu ngân.
+\end{itemize}
+
+\section{Tác nhân của hệ thống}
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\textwidth}{L{3cm} X}
+\toprule
+\textbf{Tác nhân} & \textbf{Vai trò / quyền hạn} \\
+\midrule
+Quản trị viên (ADMIN) & Toàn quyền: cấu hình, quản lý nhân viên, mọi nghiệp vụ và báo cáo. \\
+Quản lý (MANAGER) & Quản lý sản phẩm, nhập hàng, kho, báo cáo; không quản trị tài khoản hệ thống. \\
+Thu ngân (CASHIER) & Bán hàng (POS), quản lý khách hàng, xem sản phẩm/kho. \\
+Nhân viên (STAFF) & Xem sản phẩm, khách hàng, hỗ trợ bán hàng (theo phân quyền). \\
+\bottomrule
+\end{tabularx}
+\caption{Các tác nhân và phân quyền}
+\end{table}
+
+% =====================================================================
+%  CHUONG 2
+% =====================================================================
+\chapter{Phân tích hệ thống}
+
+\section{Sơ đồ phân rã chức năng (BFD)}
+Hệ thống được phân rã thành 3 cụm nghiệp vụ chính, mỗi cụm gồm các module con:
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+   every node/.style={proc, font=\footnotesize, inner sep=4pt},
+   level 1/.style={sibling distance=72mm, level distance=22mm},
+   level 2/.style={sibling distance=25mm, level distance=20mm},
+   edge from parent/.style={draw=ink,thick}]
+\node {HỆ THỐNG QUẢN LÝ BÁN BÁNH}
+  child { node {Nền tảng \&\\Sản phẩm}
+    child { node {Xác thực\\Phân quyền} }
+    child { node {Sản phẩm\\Danh mục} }
+    child { node {Báo cáo} } }
+  child { node {Cung ứng \&\\Kho}
+    child { node {Nhà\\cung cấp} }
+    child { node {Nhập\\hàng} }
+    child { node {Tồn\\kho} } }
+  child { node {Bán hàng \&\\Nhân sự}
+    child { node {Bán hàng\\(POS)} }
+    child { node {Khách\\hàng} }
+    child { node {Nhân\\viên} } };
+\end{tikzpicture}}
+\caption{Sơ đồ phân rã chức năng hệ thống}
+\end{figure}
+
+\section{Biểu đồ Use Case tổng quát}
+\begin{figure}[H]
+\centering
+\resizebox{0.96\textwidth}{!}{%
+\begin{tikzpicture}[node distance=8mm]
+  \node[actor] (admin) {Quản trị/\\Quản lý};
+  \node[uc, right=2.2cm of admin] (u1) {Quản lý sản phẩm,\\danh mục};
+  \node[uc, below=of u1] (u2) {Nhập hàng,\\nhà cung cấp};
+  \node[uc, below=of u2] (u3) {Quản lý kho,\\kiểm kê};
+  \node[uc, below=of u3] (u4) {Xem báo cáo};
+  \node[uc, below=of u4] (u5) {Quản lý\\nhân viên};
+  \node[uc, below=of u5] (u6) {Lập hóa đơn\\bán hàng};
+  \node[uc, below=of u6] (u7) {Quản lý\\khách hàng};
+  \node[actor, right=2.2cm of u6] (cashier) {Thu ngân};
+  \node[actor, above=1.2cm of cashier] (staff) {Nhân viên};
+
+  \foreach \u in {u1,u2,u3,u4,u5} { \draw[thick] (admin) -- (\u); }
+  \draw[thick] (cashier) -- (u6);
+  \draw[thick] (cashier) -- (u7);
+  \draw[thick] (staff) -- (u7);
+  \draw[thick] (staff) -- (u6);
+\end{tikzpicture}}
+\caption{Biểu đồ use case tổng quát}
+\end{figure}
+
+\section{Đặc tả một số use case tiêu biểu}
+
+\subsection{Use case ``Lập hóa đơn bán hàng''}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{L{3cm} X}
+\toprule
+\textbf{Mục} & \textbf{Nội dung} \\
+\midrule
+Tác nhân & Thu ngân (CASHIER), Quản lý, Quản trị viên \\
+Tiền điều kiện & Đã đăng nhập; sản phẩm còn tồn kho \\
+Luồng chính &
+1.~Thu ngân chọn các sản phẩm và số lượng.\newline
+2.~Hệ thống kiểm tra tồn kho, tính tiền hàng.\newline
+3.~Thu ngân chọn khách hàng (tùy chọn), nhập giảm giá, chọn hình thức thanh toán.\newline
+4.~Hệ thống tạo hóa đơn, \textbf{trừ tồn kho} từng sản phẩm trong một transaction, ghi nhận biến động kho.\newline
+5.~Hệ thống trả về mã hóa đơn và thành tiền. \\
+Luồng ngoại lệ & 2a.~Nếu một sản phẩm không đủ tồn kho $\rightarrow$ báo lỗi, dừng giao dịch. \\
+Hậu điều kiện & Hóa đơn được lưu (trạng thái COMPLETED); tồn kho giảm tương ứng. \\
+\bottomrule
+\end{tabularx}
+\caption{Đặc tả use case Lập hóa đơn bán hàng}
+\end{table}
+
+\subsection{Use case ``Nhập hàng''}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{L{3cm} X}
+\toprule
+\textbf{Mục} & \textbf{Nội dung} \\
+\midrule
+Tác nhân & Quản lý, Quản trị viên \\
+Tiền điều kiện & Đã đăng nhập với quyền MANAGER trở lên \\
+Luồng chính &
+1.~Chọn nhà cung cấp, thêm các mặt hàng (sản phẩm, số lượng, giá nhập).\newline
+2.~Hệ thống tính tổng tiền, tạo phiếu nhập (trạng thái RECEIVED).\newline
+3.~Hệ thống \textbf{cộng tồn kho} từng sản phẩm và ghi nhận biến động kho trong một transaction. \\
+Hậu điều kiện & Phiếu nhập được lưu; tồn kho tăng tương ứng. \\
+\bottomrule
+\end{tabularx}
+\caption{Đặc tả use case Nhập hàng}
+\end{table}
+
+\section{Biểu đồ luồng dữ liệu --- mức ngữ cảnh}
+\begin{figure}[H]
+\centering
+\resizebox{0.9\textwidth}{!}{%
+\begin{tikzpicture}[node distance=2.4cm]
+  \node[proc, minimum width=4cm, minimum height=1.6cm] (sys) {HỆ THỐNG\\QUẢN LÝ BÁN BÁNH};
+  \node[ent, left=of sys] (cashier) {Thu ngân};
+  \node[ent, right=of sys] (manager) {Quản lý};
+  \node[ent, above=of sys] (customer) {Khách hàng};
+  \node[ent, below=of sys] (supplier) {Nhà cung cấp};
+
+  \draw[flow] (cashier) -- node[above,sloped,font=\scriptsize]{đơn hàng} (sys);
+  \draw[flow] (sys) -- node[below,sloped,font=\scriptsize]{hóa đơn} (cashier);
+  \draw[flow] (manager) -- node[above,sloped,font=\scriptsize]{phiếu nhập, yêu cầu} (sys);
+  \draw[flow] (sys) -- node[below,sloped,font=\scriptsize]{báo cáo} (manager);
+  \draw[flow] (customer) -- node[left,font=\scriptsize]{thông tin mua hàng} (sys);
+  \draw[flow] (sys) -- node[left,font=\scriptsize]{thông tin hàng hóa} (supplier);
+\end{tikzpicture}}
+\caption{Biểu đồ luồng dữ liệu mức ngữ cảnh}
+\end{figure}
+
+% =====================================================================
+%  CHUONG 3
+% =====================================================================
+\chapter{Thiết kế hệ thống}
+
+\section{Thiết kế kiến trúc}
+Hệ thống theo kiến trúc \textbf{ba tầng} kết hợp tổ chức \textbf{modular} ở backend (mỗi module tự chứa routes -- controller -- service -- validation):
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=8mm]
+  \node[box] (fe) {\textbf{TẦNG GIAO DIỆN} --- React + TypeScript + Ant Design\\ Pages $\rightarrow$ Components $\rightarrow$ Services (Axios)};
+  \node[box, below=of fe] (be) {\textbf{TẦNG XỬ LÝ} --- Node.js + Express + TypeScript\\ Routes $\rightarrow$ Controllers $\rightarrow$ Services $\rightarrow$ Prisma ORM};
+  \node[box, below=of be] (db) {\textbf{TẦNG DỮ LIỆU} --- PostgreSQL};
+  \draw[flow] (fe) -- node[right,font=\scriptsize]{HTTP/REST (JSON)} (be);
+  \draw[flow] (be) -- node[right,font=\scriptsize]{SQL (Prisma)} (db);
+\end{tikzpicture}
+\caption{Kiến trúc ba tầng của hệ thống}
+\end{figure}
+
+\section{Thiết kế cơ sở dữ liệu}
+
+\subsection{Các thực thể và quan hệ chính}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Một \textbf{Danh mục} (Category) có nhiều \textbf{Sản phẩm} (Product).
+  \item Một \textbf{Hóa đơn} (Order) thuộc về một \textbf{Khách hàng} và do một \textbf{Nhân viên} lập; gồm nhiều \textbf{Chi tiết hóa đơn} (OrderItem).
+  \item Một \textbf{Phiếu nhập} (PurchaseOrder) thuộc một \textbf{Nhà cung cấp}; gồm nhiều \textbf{Chi tiết phiếu nhập}.
+  \item Mỗi \textbf{Sản phẩm} có nhiều bản ghi \textbf{Biến động kho} (StockMovement: nhập/xuất/điều chỉnh).
+  \item Một \textbf{Tài khoản} (User) liên kết một \textbf{Nhân viên}; mỗi nhân viên có nhiều bản ghi \textbf{Chấm công} (Attendance).
+\end{itemize}
+
+\subsection{Danh sách bảng}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{L{3.6cm} X}
+\toprule
+\textbf{Bảng} & \textbf{Mô tả} \\
+\midrule
+\texttt{users} & Tài khoản đăng nhập, vai trò \\
+\texttt{employees} & Hồ sơ nhân viên (CCCD, ngày sinh, trạng thái...) \\
+\texttt{attendances} & Chấm công nhân viên theo ngày \\
+\texttt{categories} & Danh mục sản phẩm \\
+\texttt{products} & Sản phẩm (giá bán, giá vốn, tồn kho) \\
+\texttt{customers} & Khách hàng \\
+\texttt{suppliers} & Nhà cung cấp \\
+\texttt{orders} & Hóa đơn bán hàng \\
+\texttt{order\_items} & Chi tiết hóa đơn \\
+\texttt{purchase\_orders} & Phiếu nhập hàng \\
+\texttt{purchase\_order\_items} & Chi tiết phiếu nhập \\
+\texttt{stock\_movements} & Lịch sử biến động tồn kho \\
+\bottomrule
+\end{tabularx}
+\caption{Danh sách 12 bảng trong cơ sở dữ liệu}
+\end{table}
+
+\subsection{Từ điển dữ liệu (một số bảng tiêu biểu)}
+
+\textbf{Bảng \texttt{products} (sản phẩm)}
+\begin{longtable}{L{3.2cm} L{3cm} L{8.8cm}}
+\toprule
+\textbf{Thuộc tính} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\midrule \endhead
+id & SERIAL (PK) & Khóa chính \\
+sku & VARCHAR, unique & Mã sản phẩm \\
+name & VARCHAR & Tên sản phẩm \\
+category\_id & INT (FK) & Danh mục \\
+sale\_price & DECIMAL(12,2) & Giá bán \\
+cost\_price & DECIMAL(12,2) & Giá vốn \\
+stock\_quantity & INT & Số lượng tồn kho hiện tại \\
+min\_stock & INT & Ngưỡng tồn tối thiểu (cảnh báo) \\
+is\_active & BOOLEAN & Còn kinh doanh hay không \\
+\bottomrule
+\caption{Từ điển dữ liệu bảng products}
+\end{longtable}
+
+\textbf{Bảng \texttt{orders} (hóa đơn)}
+\begin{longtable}{L{3.2cm} L{3cm} L{8.8cm}}
+\toprule
+\textbf{Thuộc tính} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\midrule \endhead
+id & SERIAL (PK) & Khóa chính \\
+code & VARCHAR, unique & Mã hóa đơn (HD00001...) \\
+customer\_id & INT (FK) & Khách hàng (có thể trống --- khách lẻ) \\
+employee\_id & INT (FK) & Nhân viên lập đơn \\
+total\_amount & DECIMAL(12,2) & Tổng tiền hàng \\
+discount & DECIMAL(12,2) & Giảm giá \\
+final\_amount & DECIMAL(12,2) & Thành tiền \\
+payment\_method & ENUM & CASH / CARD / TRANSFER \\
+status & ENUM & PENDING / COMPLETED / CANCELLED \\
+created\_at & TIMESTAMP & Thời điểm lập đơn \\
+\bottomrule
+\caption{Từ điển dữ liệu bảng orders}
+\end{longtable}
+
+\textbf{Bảng \texttt{employees} (nhân viên)}
+\begin{longtable}{L{3.4cm} L{3cm} L{8.6cm}}
+\toprule
+\textbf{Thuộc tính} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\midrule \endhead
+id & SERIAL (PK) & Khóa chính \\
+full\_name & VARCHAR & Họ tên \\
+phone, email & VARCHAR & Liên hệ \\
+address & VARCHAR & Địa chỉ \\
+gender & ENUM & MALE / FEMALE / OTHER \\
+date\_of\_birth & DATE & Ngày sinh \\
+citizen\_id & VARCHAR, unique & Số CCCD \\
+emergency\_contact & VARCHAR & Liên hệ khẩn cấp \\
+position & VARCHAR & Chức vụ \\
+salary & DECIMAL(12,2) & Lương \\
+status & ENUM & ACTIVE / ON\_LEAVE / INACTIVE \\
+hired\_at & DATE & Ngày vào làm \\
+user\_id & INT (FK) & Tài khoản liên kết \\
+\bottomrule
+\caption{Từ điển dữ liệu bảng employees}
+\end{longtable}
+
+\textbf{Bảng \texttt{stock\_movements} (biến động kho)}
+\begin{longtable}{L{3.2cm} L{3cm} L{8.8cm}}
+\toprule
+\textbf{Thuộc tính} & \textbf{Kiểu} & \textbf{Mô tả} \\
+\midrule \endhead
+id & SERIAL (PK) & Khóa chính \\
+product\_id & INT (FK) & Sản phẩm \\
+type & ENUM & IN (nhập) / OUT (xuất) / ADJUST (điều chỉnh) \\
+quantity & INT & Số lượng thay đổi \\
+reference\_type & VARCHAR & Nguồn: ORDER / PURCHASE / ADJUST \\
+reference\_id & INT & Mã chứng từ liên quan \\
+created\_at & TIMESTAMP & Thời điểm ghi nhận \\
+\bottomrule
+\caption{Từ điển dữ liệu bảng stock\_movements}
+\end{longtable}
+
+\section{Thiết kế xử lý tồn kho}
+Mọi thay đổi tồn kho đi qua một dịch vụ duy nhất \texttt{stockMovement()} chạy trong transaction: vừa ghi một bản ghi vào \texttt{stock\_movements}, vừa cập nhật \texttt{stock\_quantity} của sản phẩm. Nhờ đó tồn kho luôn thỏa: \emph{tồn hiện tại = tổng nhập $-$ tổng xuất}. Bán hàng gọi loại \texttt{OUT}, nhập hàng gọi loại \texttt{IN}, kiểm kê dùng \texttt{ADJUST}.
+
+\section{Thiết kế giao diện}
+Giao diện gồm trang đăng nhập và bố cục chính (sidebar điều hướng + vùng nội dung). Menu hiển thị \emph{theo vai trò}: nhân viên chỉ thấy một số chức năng, quản trị thấy đầy đủ. Các màn hình chính: Bán hàng (POS), Sản phẩm, Danh mục, Kho, Nhập hàng, Nhà cung cấp, Khách hàng, Nhân viên, Báo cáo.
+
+% Chen anh chup man hinh thuc te (neu co): bo dau % o dong duoi
+% \begin{figure}[H]\centering\includegraphics[width=0.8\textwidth]{man-hinh-ban-hang.png}
+% \caption{Màn hình bán hàng (POS)}\end{figure}
+
+% =====================================================================
+%  CHUONG 4
+% =====================================================================
+\chapter{Cài đặt và kết quả}
+
+\section{Công nghệ sử dụng}
+\begin{table}[H]\centering\small
+\begin{tabularx}{\textwidth}{L{3.2cm} X}
+\toprule
+\textbf{Thành phần} & \textbf{Công nghệ} \\
+\midrule
+Frontend & React 18 + Vite + TypeScript + Ant Design 5 \\
+Backend & Node.js + Express + TypeScript \\
+Cơ sở dữ liệu & PostgreSQL \\
+ORM & Prisma \\
+Xác thực & JWT + bcrypt \\
+Kiểm tra dữ liệu & Zod \\
+\bottomrule
+\end{tabularx}
+\caption{Công nghệ sử dụng}
+\end{table}
+
+\section{Kết quả đạt được}
+Hệ thống đã hoàn thiện \textbf{10 module nghiệp vụ} với REST API đầy đủ và giao diện quản trị cho từng module; phân quyền theo vai trò ở cả backend lẫn giao diện. Để minh họa và kiểm thử, nhóm đã tạo bộ dữ liệu mẫu quy mô lớn:
+
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item 200 khách hàng, 20 nhà cung cấp, 20 sản phẩm thuộc 5 danh mục.
+  \item \textbf{4000 hóa đơn} trải đều trong một năm, kèm chi tiết và biến động kho nhất quán.
+  \item Hơn 1.200 bản ghi chấm công cho nhân viên.
+\end{itemize}
+
+Báo cáo doanh thu trên dữ liệu mẫu cho thấy hệ thống tính đúng doanh thu, giá vốn và lợi nhuận; tồn kho được kiểm chứng \emph{không âm} và khớp với tổng nhập trừ tổng xuất.
+
+\section{Hướng phát triển}
+\begin{itemize}[leftmargin=1.4cm,nosep]
+  \item Bổ sung kiểm thử tự động và đóng gói Docker, triển khai thực tế.
+  \item In hóa đơn, mã vạch/QR cho sản phẩm.
+  \item Quản lý hạn sử dụng, khuyến mãi, chương trình thành viên nâng cao.
+  \item Báo cáo trực quan bằng biểu đồ, xuất Excel/PDF.
+\end{itemize}
+
+% =====================================================================
+%  KET LUAN
+% =====================================================================
+\chapter*{Kết luận}
+\addcontentsline{toc}{chapter}{Kết luận}
+
+Qua đề tài, nhóm đã vận dụng được quy trình \textbf{phân tích và thiết kế hệ thống}: từ khảo sát hiện trạng, xác định yêu cầu, mô hình hóa chức năng và dữ liệu, đến thiết kế kiến trúc và cài đặt một hệ thống hoàn chỉnh. Sản phẩm đáp ứng các nghiệp vụ cốt lõi của một cửa hàng bánh, đặc biệt bảo đảm \emph{tính nhất quán của tồn kho} --- điểm mấu chốt của bài toán. Nhóm cũng rèn luyện kỹ năng làm việc nhóm theo kiến trúc modular và quy trình Git. Bên cạnh kết quả đạt được, hệ thống vẫn còn hướng mở rộng như đã nêu ở Chương 4.
+
+% =====================================================================
+%  TAI LIEU THAM KHAO
+% =====================================================================
+\begin{thebibliography}{9}
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+\bibitem{prisma} Prisma ORM Documentation. \url{https://www.prisma.io/docs}
+\bibitem{express} Express.js Documentation. \url{https://expressjs.com}
+\bibitem{antd} Ant Design Components. \url{https://ant.design}
+\bibitem{postgres} PostgreSQL Documentation. \url{https://www.postgresql.org/docs}
+\bibitem{react} React Documentation. \url{https://react.dev}
+\end{thebibliography}
+
+\end{document}
