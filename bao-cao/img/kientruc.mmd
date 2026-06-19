@@ -1,0 +1,33 @@
+flowchart TB
+  classDef shared fill:#FFF3CD,stroke:#C43E0F,stroke-width:2px,color:#212529,font-weight:bold;
+  classDef db     fill:#ECECEC,stroke:#212529,stroke-width:1.5px,color:#212529,font-weight:bold;
+
+  subgraph FE["TẦNG GIAO DIỆN — React + TypeScript + Ant Design"]
+    direction LR
+    fe1["Pages (mỗi module một trang)"] --> fe2["Components"] --> fe3["Services (Axios)"]
+  end
+
+  subgraph BE["TẦNG XỬ LÝ — Node.js + Express + TypeScript · kiến trúc MODULAR"]
+    direction TB
+    mw["Middleware dùng chung: xác thực JWT · kiểm tra Zod · xử lý lỗi tập trung"]
+    mods["Các module độc lập:<br/>Auth · Products · Categories · Sales · Inventory<br/>Purchasing · Suppliers · Customers · Employees · Reports"]
+    subgraph ONE["Cấu trúc bên trong MỖI module"]
+      direction LR
+      r["routes"] --> co["controller"] --> se["service"]
+      va["validation<br/>(Zod)"] -.-> co
+    end
+    inv["Service kho DÙNG CHUNG<br/>inventory.stockMovement()"]:::shared
+  end
+
+  db["TẦNG DỮ LIỆU — PostgreSQL"]:::db
+
+  fe3 -->|"HTTP/REST (JSON)"| mw
+  mw --> mods
+  mods --> ONE
+  se -.->|"Sales / Purchasing / Inventory gọi"| inv
+  se -->|"Prisma ORM (SQL)"| db
+  inv -->|"Prisma ORM (SQL)"| db
+
+  style FE fill:#E7F1FB,stroke:#2C6FB5,stroke-width:1.5px
+  style BE fill:#FBEAE5,stroke:#C43E0F,stroke-width:1.5px
+  style ONE fill:#FFFFFF,stroke:#C43E0F,stroke-width:1px

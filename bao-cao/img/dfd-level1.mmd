@@ -1,0 +1,49 @@
+flowchart TB
+  classDef ext   fill:#ECECEC,stroke:#212529,stroke-width:1.5px,color:#212529,font-weight:bold;
+  classDef proc  fill:#FBEAE5,stroke:#C43E0F,stroke-width:1.5px,color:#212529,font-weight:bold;
+  classDef store fill:#FFF3CD,stroke:#C43E0F,stroke-width:1.5px,color:#212529;
+
+  %% Tac nhan ngoai
+  kh["Khách hàng"]:::ext
+  tn["Thu ngân"]:::ext
+  ql["Quản lý"]:::ext
+  ncc["Nhà cung cấp"]:::ext
+
+  %% Tien trinh
+  p1(("1.0<br/>Bán hàng")):::proc
+  p2(("2.0<br/>Nhập hàng")):::proc
+  p3(("3.0<br/>Quản lý kho")):::proc
+  p4(("4.0<br/>Báo cáo")):::proc
+
+  %% Kho du lieu
+  d1[["D1 | Hóa đơn"]]:::store
+  d2[["D2 | Phiếu nhập"]]:::store
+  d3[["D3 | Sản phẩm / Tồn kho"]]:::store
+
+  %% Ban hang
+  kh -->|"yêu cầu mua hàng"| p1
+  p1 -->|"hóa đơn"| kh
+  tn -->|"thông tin bán hàng"| p1
+  p1 -->|"hóa đơn"| tn
+  d3 -->|"kiểm tra tồn"| p1
+  p1 -->|"trừ kho (OUT)"| d3
+  p1 -->|"lưu hóa đơn"| d1
+
+  %% Nhap hang
+  ncc -->|"thông tin hàng, giá nhập"| p2
+  p2 -->|"đơn đặt hàng"| ncc
+  ql -->|"phiếu nhập"| p2
+  p2 -->|"lưu phiếu"| d2
+  p2 -->|"cộng kho (IN)"| d3
+
+  %% Quan ly kho
+  ql -->|"yêu cầu kiểm kê"| p3
+  d3 -->|"số liệu tồn"| p3
+  p3 -->|"điều chỉnh (ADJUST)"| d3
+  p3 -->|"cảnh báo tồn kho"| ql
+
+  %% Bao cao
+  ql -->|"yêu cầu báo cáo"| p4
+  d1 -->|"doanh thu"| p4
+  d3 -->|"giá vốn, tồn kho"| p4
+  p4 -->|"báo cáo"| ql

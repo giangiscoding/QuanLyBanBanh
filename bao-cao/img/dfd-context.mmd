@@ -1,0 +1,21 @@
+flowchart TB
+  classDef ext  fill:#ECECEC,stroke:#212529,stroke-width:1.5px,color:#212529,font-weight:bold;
+  classDef proc fill:#FBEAE5,stroke:#C43E0F,stroke-width:2px,color:#212529,font-weight:bold;
+
+  kh["Khách hàng"]:::ext
+  tn["Thu ngân"]:::ext
+  ql["Quản lý / Quản trị"]:::ext
+  ncc["Nhà cung cấp"]:::ext
+  sys("HỆ THỐNG QUẢN LÝ BÁN BÁNH"):::proc
+
+  kh -->|"yêu cầu mua hàng, thông tin khách"| sys
+  sys -->|"hóa đơn / biên lai"| kh
+
+  tn -->|"thông tin bán hàng"| sys
+  sys -->|"hóa đơn, tồn kho"| tn
+
+  ql -->|"phiếu nhập, dữ liệu, yêu cầu báo cáo"| sys
+  sys -->|"báo cáo, cảnh báo tồn kho"| ql
+
+  ncc -->|"thông tin hàng, giá nhập"| sys
+  sys -->|"đơn đặt hàng"| ncc

@@ -1,0 +1,38 @@
+flowchart LR
+  classDef actor  fill:#ECECEC,stroke:#212529,stroke-width:1.5px,color:#212529,font-weight:bold;
+  classDef uc     fill:#FBEAE5,stroke:#C43E0F,stroke-width:1.5px,color:#212529;
+  classDef shared fill:#FFF3CD,stroke:#C43E0F,stroke-width:1.5px,color:#212529,font-weight:bold;
+  classDef ext    fill:#E7F1FB,stroke:#2C6FB5,stroke-width:1.5px,color:#212529;
+
+  admin["Quản trị / Quản lý"]:::actor
+  staff["Nhân viên"]:::actor
+  cashier["Thu ngân"]:::actor
+
+  u1(["Quản lý sản phẩm, danh mục"]):::uc
+  u2(["Nhập hàng, nhà cung cấp"]):::uc
+  u3(["Quản lý kho, kiểm kê"]):::uc
+  u4(["Xem báo cáo"]):::uc
+  u5(["Quản lý nhân viên"]):::uc
+  u6(["Lập hóa đơn bán hàng"]):::uc
+  u7(["Quản lý khách hàng"]):::uc
+  u8(["Hủy hóa đơn"]):::uc
+
+  inv(["Cập nhật tồn kho"]):::shared
+  ext(["Áp dụng giảm giá"]):::ext
+
+  admin --- u1
+  admin --- u2
+  admin --- u3
+  admin --- u4
+  admin --- u5
+  admin --- u8
+  staff  --- u6
+  staff  --- u7
+  cashier --- u6
+  cashier --- u7
+
+  u2 -. "«include»" .-> inv
+  u3 -. "«include»" .-> inv
+  u6 -. "«include»" .-> inv
+  u8 -. "«include»" .-> inv
+  ext -. "«extend»" .-> u6
